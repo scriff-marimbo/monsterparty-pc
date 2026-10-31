@@ -5,6 +5,8 @@ A disassembly of the NES game Monster Party (US release) and the unreleased Japa
 C++ and run on a small NES layer behind SDL3, with a settings window, Remix Mode, difficulty
 levels, trainers, leaderboards, MIDI music, shaders, a 3D mode and more.
 
+![game screen](https://i.imgur.com/bxIdC6d.png)
+
 - `port/`: the native port. Start with [`port/README.md`](port/README.md) (building, options, how it works).
 - `monsterparty/`, `monsterparty_jp/`: the disassembly (ca65), rebuilt byte-for-byte by `build.sh` from your own ROM.
 - `tools/`: scripts for names, text and level formats, and notes on how the disassembly was made.

@@ -1,0 +1,15 @@
+# Expected RAM hashes (FNV-1a of the 2 KB of RAM) at the end of the tests' scripted runs, from the
+# port as it was when they were recorded. A mismatch means the game now plays differently.
+# Record again (only when that's intended) with:  MP_RECORD_GOLDEN=1 ./build/monsterparty_tests "[golden]"
+us.start_game = 0xA09D9511
+us.play_round1 = 0x58C888DA
+proto.start_game = 0xA341FDE6
+proto.play_round1 = 0xC92127CE
+us.remix_1A2B3C4D.play_round1 = 0xBF99BACD
+proto.remix_1A2B3C4D.play_round1 = 0x72E17790
+us.widescreen.title = 0x0F613214
+proto.widescreen.title = 0x6F610E02
+us.widescreen.password = 0x39D3CA8A
+proto.widescreen.password = 0xAD334C5E
+us.widescreen.game_over = 0x4FDB7E1F
+proto.widescreen.game_over = 0xB13FD18E

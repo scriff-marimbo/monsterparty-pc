@@ -1,0 +1,39 @@
+4 $8000 CDL code (task entry jump)
+5 $8000 CDL code (task entry jump)
+5 $8003 CDL code (task entry jump)
+5 $A069 CDL code
+5 $A0C5 CDL code
+5 $ACD9 CDL code
+5 $A065 BossInit table entry 0
+5 $A069 BossInit table entry 1
+5 $A0A2 BossInit table entry 2
+5 $A0B5 BossInit table entry 3
+5 $A118 BossInit table entry 4
+5 $A11C BossInit table entry 5
+5 $A131 BossInit table entry 6
+5 $A145 BossInit table entry 7
+5 $A178 BossInit table entry 8
+5 $A17C BossInit table entry 9
+5 $A1DC BossInit table entry 10
+5 $A220 BossInit table entry 11
+5 $A27D BossInit table entry 12
+5 $A281 BossInit table entry 13
+5 $A2C5 BossInit table entry 14
+5 $A302 BossInit table entry 15
+5 $A332 BossInit table entry 16
+5 $A337 BossInit table entry 17
+5 $A391 BossInit table entry 18
+5 $A332 BossInit table entry 19
+5 $A3D8 BossInit table entry 20
+5 $A3DD BossInit table entry 21
+5 $A3D8 BossInit table entry 22
+5 $A3D8 BossInit table entry 23
+5 $A3FB BossInit table entry 24
+5 $A3FF BossInit table entry 25
+5 $A475 BossInit table entry 26
+5 $A489 BossInit table entry 27
+5 $A4A3 BossInit table entry 28
+5 $A4A7 BossInit table entry 29
+5 $A5CD BossInit table entry 30
+5 $A606 BossInit table entry 31
+5 $A635 BossInit table entry 32

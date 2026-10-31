@@ -1,0 +1,3174 @@
+[
+ {
+  "us_bank": 4,
+  "us_label": "b4_jump_table_8164",
+  "us_labels": [
+   [
+    "b4_jump_table_8164",
+    33124
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 33134,
+  "entries": [
+   {
+    "jp_addr": 33134,
+    "kind": "word",
+    "us_label": "b4_label_81c2",
+    "c": 0,
+    "val": 33228
+   },
+   {
+    "jp_addr": 33136,
+    "kind": "word",
+    "us_label": "b4_label_81c2",
+    "c": 0,
+    "val": 33228
+   },
+   {
+    "jp_addr": 33138,
+    "kind": "word",
+    "us_label": "b4_label_81c2",
+    "c": 0,
+    "val": 33228
+   },
+   {
+    "jp_addr": 33140,
+    "kind": "word",
+    "us_label": "b4_label_81b9",
+    "c": 0,
+    "val": 33219
+   },
+   {
+    "jp_addr": 33142,
+    "kind": "word",
+    "us_label": "b4_label_81b9",
+    "c": 0,
+    "val": 33219
+   },
+   {
+    "jp_addr": 33144,
+    "kind": "word",
+    "us_label": "b4_label_81b9",
+    "c": 0,
+    "val": 33219
+   },
+   {
+    "jp_addr": 33146,
+    "kind": "word",
+    "us_label": "b4_label_817c",
+    "c": 0,
+    "val": 33158
+   },
+   {
+    "jp_addr": 33148,
+    "kind": "word",
+    "us_label": "b4_label_817c",
+    "c": 0,
+    "val": 33158
+   },
+   {
+    "jp_addr": 33150,
+    "kind": "word",
+    "us_label": "b4_label_817c",
+    "c": 0,
+    "val": 33158
+   },
+   {
+    "jp_addr": 33152,
+    "kind": "word",
+    "us_label": "b4_label_817c",
+    "c": 0,
+    "val": 33158
+   },
+   {
+    "jp_addr": 33154,
+    "kind": "word",
+    "us_label": "b4_label_81c2",
+    "c": 0,
+    "val": 33228
+   },
+   {
+    "jp_addr": 33156,
+    "kind": "word",
+    "us_label": "b4_label_81c2",
+    "c": 0,
+    "val": 33228
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_jump_table_81f2",
+  "us_labels": [
+   [
+    "b4_jump_table_81f2",
+    33266
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 33276,
+  "entries": [
+   {
+    "jp_addr": 33276,
+    "kind": "word",
+    "us_label": "b4_label_8202",
+    "c": 0,
+    "val": 33292
+   },
+   {
+    "jp_addr": 33278,
+    "kind": "word",
+    "us_label": "b4_label_8202",
+    "c": 0,
+    "val": 33292
+   },
+   {
+    "jp_addr": 33280,
+    "kind": "word",
+    "us_label": "b4_func_8709",
+    "c": 0,
+    "val": 34540
+   },
+   {
+    "jp_addr": 33282,
+    "kind": "word",
+    "us_label": "b4_label_87dc",
+    "c": 0,
+    "val": 34753
+   },
+   {
+    "jp_addr": 33284,
+    "kind": "word",
+    "us_label": "b4_label_88ba",
+    "c": 0,
+    "val": 34964
+   },
+   {
+    "jp_addr": 33286,
+    "kind": "word",
+    "us_label": "b4_label_8451",
+    "c": 0,
+    "val": 33847
+   },
+   {
+    "jp_addr": 33288,
+    "kind": "word",
+    "us_label": "b4_label_8afa",
+    "c": 0,
+    "val": 35540
+   },
+   {
+    "jp_addr": 33290,
+    "kind": "word",
+    "us_label": "b4_label_8b0d",
+    "c": 0,
+    "val": 35559
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_PlayerDpadHandlers",
+  "us_labels": [
+   [
+    "b4_PlayerDpadHandlers",
+    33342
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 33352,
+  "entries": [
+   {
+    "jp_addr": 33352,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   },
+   {
+    "jp_addr": 33354,
+    "kind": "word",
+    "us_label": "b4_label_82a9",
+    "c": 0,
+    "val": 33459
+   },
+   {
+    "jp_addr": 33356,
+    "kind": "word",
+    "us_label": "b4_label_82bf",
+    "c": 0,
+    "val": 33481
+   },
+   {
+    "jp_addr": 33358,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   },
+   {
+    "jp_addr": 33360,
+    "kind": "word",
+    "us_label": "b4_label_835e",
+    "c": 0,
+    "val": 33604
+   },
+   {
+    "jp_addr": 33362,
+    "kind": "word",
+    "us_label": "b4_label_83a5",
+    "c": 0,
+    "val": 33675
+   },
+   {
+    "jp_addr": 33364,
+    "kind": "word",
+    "us_label": "b4_label_83d4",
+    "c": 0,
+    "val": 33722
+   },
+   {
+    "jp_addr": 33366,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   },
+   {
+    "jp_addr": 33368,
+    "kind": "word",
+    "us_label": "b4_Player_UpPressed",
+    "c": 0,
+    "val": 33527
+   },
+   {
+    "jp_addr": 33370,
+    "kind": "word",
+    "us_label": "b4_label_82a9",
+    "c": 0,
+    "val": 33459
+   },
+   {
+    "jp_addr": 33372,
+    "kind": "word",
+    "us_label": "b4_label_82bf",
+    "c": 0,
+    "val": 33481
+   },
+   {
+    "jp_addr": 33374,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   },
+   {
+    "jp_addr": 33376,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   },
+   {
+    "jp_addr": 33378,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   },
+   {
+    "jp_addr": 33380,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   },
+   {
+    "jp_addr": 33382,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   },
+   {
+    "jp_addr": 33384,
+    "kind": "word",
+    "us_label": "b4_label_8260",
+    "c": 0,
+    "val": 33386
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_data_868e_indexed",
+  "us_labels": [
+   [
+    "b4_data_868e_indexed",
+    34446
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 34417,
+  "entries": [
+   {
+    "jp_addr": 34417,
+    "kind": "word",
+    "us_label": "b4_label_86a6",
+    "c": 0,
+    "val": 34441
+   },
+   {
+    "jp_addr": 34419,
+    "kind": "word",
+    "us_label": "b4_label_86a6",
+    "c": 0,
+    "val": 34441
+   },
+   {
+    "jp_addr": 34421,
+    "kind": "word",
+    "us_label": "b4_label_86aa",
+    "c": 0,
+    "val": 34445
+   },
+   {
+    "jp_addr": 34423,
+    "kind": "word",
+    "us_label": "b4_label_86aa",
+    "c": 0,
+    "val": 34445
+   },
+   {
+    "jp_addr": 34425,
+    "kind": "word",
+    "us_label": "b4_label_86aa",
+    "c": 0,
+    "val": 34445
+   },
+   {
+    "jp_addr": 34427,
+    "kind": "word",
+    "us_label": "b4_label_86cf",
+    "c": 0,
+    "val": 34482
+   },
+   {
+    "jp_addr": 34429,
+    "kind": "word",
+    "us_label": "b4_label_86b6",
+    "c": 0,
+    "val": 34457
+   },
+   {
+    "jp_addr": 34431,
+    "kind": "word",
+    "us_label": "b4_label_86bd",
+    "c": 0,
+    "val": 34464
+   },
+   {
+    "jp_addr": 34433,
+    "kind": "word",
+    "us_label": "b4_label_86a6",
+    "c": 0,
+    "val": 34441
+   },
+   {
+    "jp_addr": 34435,
+    "kind": "word",
+    "us_label": "b4_label_86a6",
+    "c": 0,
+    "val": 34441
+   },
+   {
+    "jp_addr": 34437,
+    "kind": "word",
+    "us_label": "b4_label_86a6",
+    "c": 0,
+    "val": 34441
+   },
+   {
+    "jp_addr": 34439,
+    "kind": "word",
+    "us_label": "b4_label_86a6",
+    "c": 0,
+    "val": 34441
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_jump_table_8bb5",
+  "us_labels": [
+   [
+    "b4_jump_table_8bb5",
+    35765
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 35731,
+  "entries": [
+   {
+    "jp_addr": 35731,
+    "kind": "word",
+    "us_label": "b4_label_8bdf",
+    "c": 0,
+    "val": 35773
+   },
+   {
+    "jp_addr": 35733,
+    "kind": "word",
+    "us_label": "b4_label_8cb1",
+    "c": 0,
+    "val": 35983
+   },
+   {
+    "jp_addr": 35735,
+    "kind": "word",
+    "us_label": "b4_label_8bc5",
+    "c": 0,
+    "val": 35747
+   },
+   {
+    "jp_addr": 35737,
+    "kind": "word",
+    "us_label": "b4_label_8c8b",
+    "c": 0,
+    "val": 35945
+   },
+   {
+    "jp_addr": 35739,
+    "kind": "word",
+    "us_label": "b4_func_8c6b",
+    "c": 0,
+    "val": 35913
+   },
+   {
+    "jp_addr": 35741,
+    "kind": "word",
+    "us_label": "b4_label_8cef",
+    "c": 0,
+    "val": 36045
+   },
+   {
+    "jp_addr": 35743,
+    "kind": "word",
+    "us_label": "b4_label_8bdf",
+    "c": 0,
+    "val": 35773
+   },
+   {
+    "jp_addr": 35745,
+    "kind": "word",
+    "us_label": "b4_label_8bdf",
+    "c": 0,
+    "val": 35773
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_jump_table_8d3e",
+  "us_labels": [
+   [
+    "b4_jump_table_8d3e",
+    36158
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 36124,
+  "entries": [
+   {
+    "jp_addr": 36124,
+    "kind": "word",
+    "us_label": "b4_label_8d18",
+    "c": 0,
+    "val": 36086
+   },
+   {
+    "jp_addr": 36126,
+    "kind": "word",
+    "us_label": "b4_label_8d18",
+    "c": 0,
+    "val": 36086
+   },
+   {
+    "jp_addr": 36128,
+    "kind": "word",
+    "us_label": "b4_label_8d18",
+    "c": 0,
+    "val": 36086
+   },
+   {
+    "jp_addr": 36130,
+    "kind": "word",
+    "us_label": "b4_label_8d38",
+    "c": 0,
+    "val": 36118
+   },
+   {
+    "jp_addr": 36132,
+    "kind": "word",
+    "us_label": "b4_label_8d37",
+    "c": 0,
+    "val": 36117
+   },
+   {
+    "jp_addr": 36134,
+    "kind": "word",
+    "us_label": "b4_label_8d37",
+    "c": 0,
+    "val": 36117
+   },
+   {
+    "jp_addr": 36136,
+    "kind": "word",
+    "us_label": "b4_label_8d18",
+    "c": 0,
+    "val": 36086
+   },
+   {
+    "jp_addr": 36138,
+    "kind": "word",
+    "us_label": "b4_label_8d18",
+    "c": 0,
+    "val": 36086
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_jump_table_8daa",
+  "us_labels": [
+   [
+    "b4_jump_table_8daa",
+    36266
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 36232,
+  "entries": [
+   {
+    "jp_addr": 36232,
+    "kind": "word",
+    "us_label": "b4_label_8d84",
+    "c": 0,
+    "val": 36194
+   },
+   {
+    "jp_addr": 36234,
+    "kind": "word",
+    "us_label": "b4_label_8d84",
+    "c": 0,
+    "val": 36194
+   },
+   {
+    "jp_addr": 36236,
+    "kind": "word",
+    "us_label": "b4_label_8d84",
+    "c": 0,
+    "val": 36194
+   },
+   {
+    "jp_addr": 36238,
+    "kind": "word",
+    "us_label": "b4_label_8da4",
+    "c": 0,
+    "val": 36226
+   },
+   {
+    "jp_addr": 36240,
+    "kind": "word",
+    "us_label": "b4_label_8da3",
+    "c": 0,
+    "val": 36225
+   },
+   {
+    "jp_addr": 36242,
+    "kind": "word",
+    "us_label": "b4_label_8d37",
+    "c": 0,
+    "val": 36117
+   },
+   {
+    "jp_addr": 36244,
+    "kind": "word",
+    "us_label": "b4_label_8d84",
+    "c": 0,
+    "val": 36194
+   },
+   {
+    "jp_addr": 36246,
+    "kind": "word",
+    "us_label": "b4_label_8d84",
+    "c": 0,
+    "val": 36194
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_jump_table_8dfa",
+  "us_labels": [
+   [
+    "b4_jump_table_8dfa",
+    36346
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 36312,
+  "entries": [
+   {
+    "jp_addr": 36312,
+    "kind": "word",
+    "us_label": "b4_label_8ddb",
+    "c": 0,
+    "val": 36281
+   },
+   {
+    "jp_addr": 36314,
+    "kind": "word",
+    "us_label": "b4_label_8df9",
+    "c": 0,
+    "val": 36311
+   },
+   {
+    "jp_addr": 36316,
+    "kind": "word",
+    "us_label": "b4_label_8ddb",
+    "c": 0,
+    "val": 36281
+   },
+   {
+    "jp_addr": 36318,
+    "kind": "word",
+    "us_label": "b4_label_8df3",
+    "c": 0,
+    "val": 36305
+   },
+   {
+    "jp_addr": 36320,
+    "kind": "word",
+    "us_label": "b4_label_8df2",
+    "c": 0,
+    "val": 36304
+   },
+   {
+    "jp_addr": 36322,
+    "kind": "word",
+    "us_label": "b4_label_8df2",
+    "c": 0,
+    "val": 36304
+   },
+   {
+    "jp_addr": 36324,
+    "kind": "word",
+    "us_label": "b4_label_8ddb",
+    "c": 0,
+    "val": 36281
+   },
+   {
+    "jp_addr": 36326,
+    "kind": "word",
+    "us_label": "b4_label_8ddb",
+    "c": 0,
+    "val": 36281
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_jump_table_8e6a",
+  "us_labels": [
+   [
+    "b4_jump_table_8e6a",
+    36458
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 36424,
+  "entries": [
+   {
+    "jp_addr": 36424,
+    "kind": "word",
+    "us_label": "b4_label_8e2b",
+    "c": 0,
+    "val": 36361
+   },
+   {
+    "jp_addr": 36426,
+    "kind": "word",
+    "us_label": "b4_label_8e66",
+    "c": 0,
+    "val": 36420
+   },
+   {
+    "jp_addr": 36428,
+    "kind": "word",
+    "us_label": "b4_label_8e2b",
+    "c": 0,
+    "val": 36361
+   },
+   {
+    "jp_addr": 36430,
+    "kind": "word",
+    "us_label": "b4_label_8e5b",
+    "c": 0,
+    "val": 36409
+   },
+   {
+    "jp_addr": 36432,
+    "kind": "word",
+    "us_label": "b4_label_8e4a",
+    "c": 0,
+    "val": 36392
+   },
+   {
+    "jp_addr": 36434,
+    "kind": "word",
+    "us_label": "b4_label_8e4a",
+    "c": 0,
+    "val": 36392
+   },
+   {
+    "jp_addr": 36436,
+    "kind": "word",
+    "us_label": "b4_label_8e2b",
+    "c": 0,
+    "val": 36361
+   },
+   {
+    "jp_addr": 36438,
+    "kind": "word",
+    "us_label": "b4_label_8e2b",
+    "c": 0,
+    "val": 36361
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_ItemHandlers",
+  "us_labels": [
+   [
+    "b4_ItemHandlers",
+    37037
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 48317,
+  "entries": [
+   {
+    "jp_addr": 48317,
+    "kind": "word",
+    "us_label": "b4_Item29_BertPower",
+    "c": 0,
+    "val": 48450
+   },
+   {
+    "jp_addr": 48319,
+    "kind": "word",
+    "us_label": "b4_Item2A_BertWeapon",
+    "c": 0,
+    "val": 48476
+   },
+   {
+    "jp_addr": 48321,
+    "kind": "word",
+    "us_label": "b4_Item2B_BertWeapon",
+    "c": 0,
+    "val": 48508
+   },
+   {
+    "jp_addr": 48323,
+    "kind": "word",
+    "us_label": "b4_Item2C_SmallHealth",
+    "c": 0,
+    "val": 48384
+   },
+   {
+    "jp_addr": 48325,
+    "kind": "word",
+    "us_label": "b4_Item2D_QuestionMark",
+    "c": 0,
+    "val": 48540
+   },
+   {
+    "jp_addr": 48327,
+    "kind": "word",
+    "us_label": "b4_Item2E_BigHealth",
+    "c": 0,
+    "val": 48412
+   },
+   {
+    "jp_addr": 48329,
+    "kind": "word",
+    "us_label": "b4_Item2F_BertCapsule",
+    "c": 0,
+    "val": 48354
+   },
+   {
+    "jp_addr": 48331,
+    "kind": "word",
+    "us_label": "b4_Item_Nothing",
+    "c": 0,
+    "val": 48440
+   },
+   {
+    "jp_addr": 48333,
+    "kind": "word",
+    "us_label": "b4_Item_Nothing",
+    "c": 0,
+    "val": 48440
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_QuestionMarkOutcomes",
+  "us_labels": [
+   [
+    "b4_QuestionMarkOutcomes",
+    37290
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 48570,
+  "entries": [
+   {
+    "jp_addr": 48570,
+    "kind": "word",
+    "us_label": "b4_QM_2000Points",
+    "c": 0,
+    "val": 48657
+   },
+   {
+    "jp_addr": 48572,
+    "kind": "word",
+    "us_label": "b4_QM_2000Points",
+    "c": 0,
+    "val": 48657
+   },
+   {
+    "jp_addr": 48574,
+    "kind": "word",
+    "us_label": "b4_QM_2000Points",
+    "c": 0,
+    "val": 48657
+   },
+   {
+    "jp_addr": 48576,
+    "kind": "word",
+    "us_label": "b4_QM_2000Points",
+    "c": 0,
+    "val": 48657
+   },
+   {
+    "jp_addr": 48578,
+    "kind": "word",
+    "us_label": "b4_QM_2000Points",
+    "c": 0,
+    "val": 48657
+   },
+   {
+    "jp_addr": 48580,
+    "kind": "word",
+    "us_label": "b4_QM_2000Points",
+    "c": 0,
+    "val": 48657
+   },
+   {
+    "jp_addr": 48582,
+    "kind": "word",
+    "us_label": "b4_QM_5000Points",
+    "c": 0,
+    "val": 48647
+   },
+   {
+    "jp_addr": 48584,
+    "kind": "word",
+    "us_label": "b4_QM_5000Points",
+    "c": 0,
+    "val": 48647
+   },
+   {
+    "jp_addr": 48586,
+    "kind": "word",
+    "us_label": "b4_QM_5000Points",
+    "c": 0,
+    "val": 48647
+   },
+   {
+    "jp_addr": 48588,
+    "kind": "word",
+    "us_label": "b4_QM_10000Points",
+    "c": 0,
+    "val": 48637
+   },
+   {
+    "jp_addr": 48590,
+    "kind": "word",
+    "us_label": "b4_QM_10000Points",
+    "c": 0,
+    "val": 48637
+   },
+   {
+    "jp_addr": 48592,
+    "kind": "word",
+    "us_label": "b4_Item2E_BigHealth",
+    "c": 0,
+    "val": 48412
+   },
+   {
+    "jp_addr": 48594,
+    "kind": "word",
+    "us_label": "b4_Item2E_BigHealth",
+    "c": 0,
+    "val": 48412
+   },
+   {
+    "jp_addr": 48596,
+    "kind": "word",
+    "us_label": "b4_QM_Health8",
+    "c": 0,
+    "val": 48674
+   },
+   {
+    "jp_addr": 48598,
+    "kind": "word",
+    "us_label": "b4_Item2F_BertCapsule",
+    "c": 0,
+    "val": 48354
+   },
+   {
+    "jp_addr": 48600,
+    "kind": "word",
+    "us_label": "b4_Item2F_BertCapsule",
+    "c": 0,
+    "val": 48354
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_ScreenHandlerPtrs",
+  "us_labels": [
+   [
+    "b4_ScreenHandlerPtrs",
+    37871
+   ]
+  ],
+  "jp_bank": 4,
+  "jp_addr": 33222,
+  "entries": [
+   {
+    "jp_addr": 33222,
+    "kind": "word",
+    "us_label": "b4_Screen0_Boot",
+    "c": -1,
+    "val": 33500
+   },
+   {
+    "jp_addr": 33224,
+    "kind": "word",
+    "us_label": "b4_Screen1_Title",
+    "c": -1,
+    "val": 33506
+   },
+   {
+    "jp_addr": 33226,
+    "kind": "word",
+    "us_label": "b4_Screen2_Password",
+    "c": -1,
+    "val": 33241
+   },
+   {
+    "jp_addr": 33228,
+    "kind": "word",
+    "us_label": "b4_Screen3_IntroStory",
+    "c": -1,
+    "val": 33256
+   },
+   {
+    "jp_addr": 33230,
+    "kind": "word",
+    "us_label": "b4_Screen4_RoundStart",
+    "c": -1,
+    "val": 33265
+   },
+   {
+    "jp_addr": 33232,
+    "kind": "word",
+    "us_label": "b4_Screen5_InGame",
+    "c": -1,
+    "val": 33350
+   },
+   {
+    "jp_addr": 33234,
+    "kind": "word",
+    "us_label": "b4_Screen6_GameOver",
+    "c": -1,
+    "val": 33369
+   },
+   {
+    "jp_addr": 33236,
+    "kind": "word",
+    "us_label": "b4_Screen7",
+    "c": -1,
+    "val": 33452
+   },
+   {
+    "jp_addr": 33238,
+    "kind": "word",
+    "us_label": "b4_Screen8_BackToTitle",
+    "c": -1,
+    "val": 33493
+   },
+   {
+    "jp_addr": 33240,
+    "kind": "word",
+    "us_label": "b4_Screen9",
+    "c": -1,
+    "val": 39419
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_jump_table_99e4",
+  "us_labels": [
+   [
+    "b4_jump_table_99e4",
+    39396
+   ]
+  ],
+  "jp_bank": 4,
+  "jp_addr": 34725,
+  "entries": [
+   {
+    "jp_addr": 34725,
+    "kind": "word",
+    "us_label": "b4_label_99e8",
+    "c": 0,
+    "val": 34729
+   },
+   {
+    "jp_addr": 34727,
+    "kind": "word",
+    "us_label": "b4_label_99e8",
+    "c": 0,
+    "val": 34729
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_StorySceneTable",
+  "us_labels": [
+   [
+    "b4_StorySceneTable",
+    40185
+   ],
+   [
+    "b4_data_9d19_indexed",
+    40217
+   ]
+  ],
+  "jp_bank": 4,
+  "jp_addr": 35512,
+  "entries": [
+   {
+    "jp_addr": 35512,
+    "kind": "word",
+    "us_label": "b4_label_9d1d",
+    "c": 0,
+    "val": 35548
+   },
+   {
+    "jp_addr": 35514,
+    "kind": "word",
+    "us_label": "b4_label_9d35",
+    "c": 0,
+    "val": 35572
+   },
+   {
+    "jp_addr": 35516,
+    "kind": "word",
+    "us_label": "b4_label_9d7c",
+    "c": 0,
+    "val": 35643
+   },
+   {
+    "jp_addr": 35518,
+    "kind": "word",
+    "us_label": "b4_label_9da2",
+    "c": 0,
+    "val": 35681
+   },
+   {
+    "jp_addr": 35520,
+    "kind": "word",
+    "us_label": "b4_label_9dd7",
+    "c": 0,
+    "val": 35734
+   },
+   {
+    "jp_addr": 35522,
+    "kind": "word",
+    "us_label": "b4_StoryScene5_Fusion",
+    "c": 0,
+    "val": 35800
+   },
+   {
+    "jp_addr": 35524,
+    "kind": "word",
+    "us_label": "b4_label_ac8f",
+    "c": 0,
+    "val": 39502
+   },
+   {
+    "jp_addr": 35526,
+    "kind": "word",
+    "us_label": "b4_label_acb4",
+    "c": 0,
+    "val": 39539
+   },
+   {
+    "jp_addr": 35528,
+    "kind": "word",
+    "us_label": "b4_label_accc",
+    "c": 0,
+    "val": 39573
+   },
+   {
+    "jp_addr": 35530,
+    "kind": "word",
+    "us_label": "b4_label_acf7",
+    "c": 0,
+    "val": 39616
+   },
+   {
+    "jp_addr": 35532,
+    "kind": "word",
+    "us_label": "b4_label_ad32",
+    "c": 0,
+    "val": 39675
+   },
+   {
+    "jp_addr": 35534,
+    "kind": "word",
+    "us_label": "b4_label_ad76",
+    "c": 0,
+    "val": 39743
+   },
+   {
+    "jp_addr": 35536,
+    "kind": "word",
+    "us_label": "b4_label_ad9a",
+    "c": 0,
+    "val": 39779
+   },
+   {
+    "jp_addr": 35538,
+    "kind": "word",
+    "us_label": "b4_label_ade4",
+    "c": 0,
+    "val": 39853
+   },
+   {
+    "jp_addr": 35540,
+    "kind": "word",
+    "us_label": "b4_label_ae06",
+    "c": 0,
+    "val": 39887
+   },
+   {
+    "jp_addr": 35542,
+    "kind": "word",
+    "us_label": "b4_label_ae2d",
+    "c": 0,
+    "val": 39926
+   },
+   {
+    "jp_addr": 35544,
+    "kind": "word",
+    "us_label": "b4_StoryScene16_Door",
+    "c": 0,
+    "val": 39960
+   },
+   {
+    "jp_addr": 35546,
+    "kind": "word",
+    "us_label": "b4_StoryScene17",
+    "c": 0,
+    "val": 40055
+   }
+  ]
+ },
+ {
+  "us_bank": 4,
+  "us_label": "b4_StoryPagePtrs",
+  "us_labels": [
+   [
+    "b4_StoryPagePtrs",
+    45487
+   ]
+  ],
+  "jp_bank": 4,
+  "jp_addr": 40834,
+  "entries": [
+   {
+    "jp_addr": 40834,
+    "kind": "word",
+    "us_label": "b4_StoryPage00",
+    "c": 0,
+    "val": 40884
+   },
+   {
+    "jp_addr": 40836,
+    "kind": "word",
+    "us_label": "b4_StoryPage01",
+    "c": 0,
+    "val": 40984
+   },
+   {
+    "jp_addr": 40838,
+    "kind": "word",
+    "us_label": "b4_StoryPage02",
+    "c": 0,
+    "val": 41067
+   },
+   {
+    "jp_addr": 40840,
+    "kind": "word",
+    "us_label": "b4_StoryPage03",
+    "c": 0,
+    "val": 41145
+   },
+   {
+    "jp_addr": 40842,
+    "kind": "word",
+    "us_label": "b4_StoryPage04",
+    "c": 0,
+    "val": 41202
+   },
+   {
+    "jp_addr": 40844,
+    "kind": "word",
+    "us_label": "b4_StoryPage05",
+    "c": 0,
+    "val": 41214
+   },
+   {
+    "jp_addr": 40846,
+    "kind": "word",
+    "us_label": "b4_StoryPage06",
+    "c": 0,
+    "val": 41230
+   },
+   {
+    "jp_addr": 40848,
+    "kind": "word",
+    "us_label": "b4_StoryPage07",
+    "c": 0,
+    "val": 41242
+   },
+   {
+    "jp_addr": 40850,
+    "kind": "word",
+    "us_label": "b4_StoryPage08",
+    "c": 0,
+    "val": 41373
+   },
+   {
+    "jp_addr": 40852,
+    "kind": "word",
+    "us_label": "b4_StoryPage09",
+    "c": 0,
+    "val": 41428
+   },
+   {
+    "jp_addr": 40854,
+    "kind": "word",
+    "us_label": "b4_StoryPage10",
+    "c": 0,
+    "val": 41479
+   },
+   {
+    "jp_addr": 40856,
+    "kind": "word",
+    "us_label": "b4_StoryPage11",
+    "c": 0,
+    "val": 41509
+   },
+   {
+    "jp_addr": 40858,
+    "kind": "word",
+    "us_label": "b4_StoryPage12",
+    "c": 0,
+    "val": 41551
+   },
+   {
+    "jp_addr": 40860,
+    "kind": "word",
+    "us_label": "b4_StoryPage13",
+    "c": 0,
+    "val": 41701
+   },
+   {
+    "jp_addr": 40862,
+    "kind": "word",
+    "us_label": "b4_StoryPage14",
+    "c": 0,
+    "val": 41740
+   },
+   {
+    "jp_addr": 40864,
+    "kind": "word",
+    "us_label": "b4_StoryPage15",
+    "c": 0,
+    "val": 41774
+   },
+   {
+    "jp_addr": 40866,
+    "kind": "word",
+    "us_label": "b4_StoryPage16",
+    "c": 0,
+    "val": 41855
+   },
+   {
+    "jp_addr": 40868,
+    "kind": "word",
+    "us_label": "b4_StoryPage17",
+    "c": 0,
+    "val": 41899
+   },
+   {
+    "jp_addr": 40870,
+    "kind": "word",
+    "us_label": "b4_StoryPage18",
+    "c": 0,
+    "val": 41956
+   },
+   {
+    "jp_addr": 40872,
+    "kind": "word",
+    "us_label": "b4_StoryPage19",
+    "c": 0,
+    "val": 42033
+   },
+   {
+    "jp_addr": 40874,
+    "kind": "word",
+    "us_label": "b4_StoryPage20",
+    "c": 0,
+    "val": 42063
+   },
+   {
+    "jp_addr": 40876,
+    "kind": "word",
+    "us_label": "b4_StoryPage21",
+    "c": 0,
+    "val": 42080
+   },
+   {
+    "jp_addr": 40878,
+    "kind": "word",
+    "us_label": "b4_StoryPage22",
+    "c": 0,
+    "val": 42172
+   },
+   {
+    "jp_addr": 40880,
+    "kind": "word",
+    "us_label": "b4_StoryPage23",
+    "c": 0,
+    "val": 42186
+   },
+   {
+    "jp_addr": 40882,
+    "kind": "word",
+    "us_label": "b4_StoryPage24",
+    "c": 0,
+    "val": 42272
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_EnemyAITable2",
+  "us_labels": [
+   [
+    "b5_EnemyAITable2",
+    33138
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 37306,
+  "entries": [
+   {
+    "jp_addr": 37306,
+    "kind": "word",
+    "us_label": "b5_AI_ManFacedDog",
+    "c": 0,
+    "val": 44461
+   },
+   {
+    "jp_addr": 37308,
+    "kind": "word",
+    "us_label": "b5_AI_PatrolAndHop",
+    "c": 0,
+    "val": 44273
+   },
+   {
+    "jp_addr": 37310,
+    "kind": "word",
+    "us_label": "b5_AI_StuckLegs",
+    "c": 0,
+    "val": 44680
+   },
+   {
+    "jp_addr": 37312,
+    "kind": "word",
+    "us_label": "b5_AI_Patrol",
+    "c": 0,
+    "val": 44249
+   },
+   {
+    "jp_addr": 37314,
+    "kind": "word",
+    "us_label": "b5_AI_Alligator",
+    "c": 0,
+    "val": 45886
+   },
+   {
+    "jp_addr": 37316,
+    "kind": "word",
+    "us_label": "b5_AI_AlienEgg",
+    "c": 0,
+    "val": 45937
+   },
+   {
+    "jp_addr": 37318,
+    "kind": "word",
+    "us_label": "b5_AI_FacePlayer",
+    "c": 0,
+    "val": 44647
+   },
+   {
+    "jp_addr": 37320,
+    "kind": "word",
+    "us_label": "b5_AI_Patrol",
+    "c": 0,
+    "val": 44249
+   },
+   {
+    "jp_addr": 37322,
+    "kind": "word",
+    "us_label": "b5_AI_FlyingVamp",
+    "c": 0,
+    "val": 44481
+   },
+   {
+    "jp_addr": 37324,
+    "kind": "word",
+    "us_label": "b5_AI_UmbrellaBat",
+    "c": 0,
+    "val": 46059
+   },
+   {
+    "jp_addr": 37326,
+    "kind": "word",
+    "us_label": "b5_AI_PatrolAndHop",
+    "c": 0,
+    "val": 44273
+   },
+   {
+    "jp_addr": 37328,
+    "kind": "word",
+    "us_label": "b5_AI_Stalact",
+    "c": 0,
+    "val": 45367
+   },
+   {
+    "jp_addr": 37330,
+    "kind": "word",
+    "us_label": "b5_AI_PatrolAndHop",
+    "c": 0,
+    "val": 44273
+   },
+   {
+    "jp_addr": 37332,
+    "kind": "word",
+    "us_label": "b5_AI_Patrol",
+    "c": 0,
+    "val": 44249
+   },
+   {
+    "jp_addr": 37334,
+    "kind": "word",
+    "us_label": "b5_AI_Patrol",
+    "c": 0,
+    "val": 44249
+   },
+   {
+    "jp_addr": 37336,
+    "kind": "word",
+    "us_label": "b5_AI_FacePlayer",
+    "c": 0,
+    "val": 44647
+   },
+   {
+    "jp_addr": 37338,
+    "kind": "word",
+    "us_label": "b5_AI_FakeShark",
+    "c": 0,
+    "val": 46385
+   },
+   {
+    "jp_addr": 37340,
+    "kind": "word",
+    "us_label": "b5_AI_SeaSerpent",
+    "c": 0,
+    "val": 46905
+   },
+   {
+    "jp_addr": 37342,
+    "kind": "word",
+    "us_label": "b5_AI_Fishbones",
+    "c": 0,
+    "val": 44961
+   },
+   {
+    "jp_addr": 37344,
+    "kind": "word",
+    "us_label": "b5_AI_HauntedFurniture",
+    "c": 0,
+    "val": 44823
+   },
+   {
+    "jp_addr": 37346,
+    "kind": "word",
+    "us_label": "b5_AI_HauntedFurniture",
+    "c": 0,
+    "val": 44823
+   },
+   {
+    "jp_addr": 37348,
+    "kind": "word",
+    "us_label": "b5_AI_Raindrop",
+    "c": 0,
+    "val": 46859
+   },
+   {
+    "jp_addr": 37350,
+    "kind": "word",
+    "us_label": "b5_AI_Patrol",
+    "c": 0,
+    "val": 44249
+   },
+   {
+    "jp_addr": 37352,
+    "kind": "word",
+    "us_label": "b5_AI_Spirit",
+    "c": 0,
+    "val": 46129
+   },
+   {
+    "jp_addr": 37354,
+    "kind": "word",
+    "us_label": "b5_AI_ElephantMan",
+    "c": 0,
+    "val": 46516
+   },
+   {
+    "jp_addr": 37356,
+    "kind": "word",
+    "us_label": "b5_AI_Umpire",
+    "c": 0,
+    "val": 46784
+   },
+   {
+    "jp_addr": 37358,
+    "kind": "word",
+    "us_label": "b5_AI_FlyingImp",
+    "c": 0,
+    "val": 46621
+   },
+   {
+    "jp_addr": 37360,
+    "kind": "word",
+    "us_label": "b5_AI_BombBird",
+    "c": 0,
+    "val": 45510
+   },
+   {
+    "jp_addr": 37362,
+    "kind": "word",
+    "us_label": "b5_AI_Witch",
+    "c": 0,
+    "val": 46495
+   },
+   {
+    "jp_addr": 37364,
+    "kind": "word",
+    "us_label": "b5_AI_Constellation",
+    "c": 0,
+    "val": 46540
+   },
+   {
+    "jp_addr": 37366,
+    "kind": "word",
+    "us_label": "b5_AI_Constellation",
+    "c": 0,
+    "val": 46540
+   },
+   {
+    "jp_addr": 37368,
+    "kind": "word",
+    "us_label": "b5_AI_Constellation",
+    "c": 0,
+    "val": 46540
+   },
+   {
+    "jp_addr": 37370,
+    "kind": "word",
+    "us_label": "b5_AI_WarpSkeleton",
+    "c": 0,
+    "val": 46957
+   },
+   {
+    "jp_addr": 37372,
+    "kind": "word",
+    "us_label": "b5_AI_TurretScorpion",
+    "c": 0,
+    "val": 47052
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_EnemyAITable",
+  "us_labels": [
+   [
+    "b5_EnemyAITable",
+    33211
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 37375,
+  "entries": [
+   {
+    "jp_addr": 37375,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37377,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_Shoot128",
+    "c": 0,
+    "val": 38498
+   },
+   {
+    "jp_addr": 37379,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37381,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37383,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_Shoot128",
+    "c": 0,
+    "val": 38498
+   },
+   {
+    "jp_addr": 37385,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37387,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37389,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37391,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37393,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37395,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37397,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37399,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37401,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_Shoot128",
+    "c": 0,
+    "val": 38498
+   },
+   {
+    "jp_addr": 37403,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37405,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37407,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37409,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37411,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37413,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37415,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37417,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37419,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37421,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37423,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37425,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37427,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37429,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37431,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37433,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37435,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37437,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37439,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37441,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   },
+   {
+    "jp_addr": 37443,
+    "kind": "word",
+    "us_label": "b5_EnemyPre_None",
+    "c": 0,
+    "val": 38495
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_data_8344_indexed",
+  "us_labels": [
+   [
+    "b5_data_8344_indexed",
+    33604
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 37790,
+  "entries": [
+   {
+    "jp_addr": 37790,
+    "kind": "word",
+    "us_label": "b5_label_8356",
+    "c": 0,
+    "val": 37808
+   },
+   {
+    "jp_addr": 37792,
+    "kind": "word",
+    "us_label": "b5_label_8398",
+    "c": 0,
+    "val": 37874
+   },
+   {
+    "jp_addr": 37794,
+    "kind": "word",
+    "us_label": "b5_label_83cb",
+    "c": 0,
+    "val": 37925
+   },
+   {
+    "jp_addr": 37796,
+    "kind": "word",
+    "us_label": "b5_label_8356",
+    "c": 0,
+    "val": 37808
+   },
+   {
+    "jp_addr": 37798,
+    "kind": "word",
+    "us_label": "b5_label_8398",
+    "c": 0,
+    "val": 37874
+   },
+   {
+    "jp_addr": 37800,
+    "kind": "word",
+    "us_label": "b5_label_8356",
+    "c": 0,
+    "val": 37808
+   },
+   {
+    "jp_addr": 37802,
+    "kind": "word",
+    "us_label": "b5_label_83ef",
+    "c": 0,
+    "val": 37961
+   },
+   {
+    "jp_addr": 37804,
+    "kind": "word",
+    "us_label": "b5_label_8356",
+    "c": 0,
+    "val": 37808
+   },
+   {
+    "jp_addr": 37806,
+    "kind": "word",
+    "us_label": "b5_label_8356",
+    "c": 0,
+    "val": 37808
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_jump_table_8571",
+  "us_labels": [
+   [
+    "b5_jump_table_8571",
+    34161
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 38336,
+  "entries": [
+   {
+    "jp_addr": 38336,
+    "kind": "word",
+    "us_label": "b5_label_8587",
+    "c": 0,
+    "val": 38358
+   },
+   {
+    "jp_addr": 38338,
+    "kind": "word",
+    "us_label": "b5_label_859e",
+    "c": 0,
+    "val": 38381
+   },
+   {
+    "jp_addr": 38340,
+    "kind": "word",
+    "us_label": "b5_label_859e",
+    "c": 0,
+    "val": 38381
+   },
+   {
+    "jp_addr": 38342,
+    "kind": "word",
+    "us_label": "b5_label_8588",
+    "c": 0,
+    "val": 38359
+   },
+   {
+    "jp_addr": 38344,
+    "kind": "word",
+    "us_label": "b5_label_8588",
+    "c": 0,
+    "val": 38359
+   },
+   {
+    "jp_addr": 38346,
+    "kind": "word",
+    "us_label": "b5_label_8588",
+    "c": 0,
+    "val": 38359
+   },
+   {
+    "jp_addr": 38348,
+    "kind": "word",
+    "us_label": "b5_label_859d",
+    "c": 0,
+    "val": 38380
+   },
+   {
+    "jp_addr": 38350,
+    "kind": "word",
+    "us_label": "b5_label_859d",
+    "c": 0,
+    "val": 38380
+   },
+   {
+    "jp_addr": 38352,
+    "kind": "word",
+    "us_label": "b5_label_859d",
+    "c": 0,
+    "val": 38380
+   },
+   {
+    "jp_addr": 38354,
+    "kind": "word",
+    "us_label": "b5_label_859d",
+    "c": 0,
+    "val": 38380
+   },
+   {
+    "jp_addr": 38356,
+    "kind": "word",
+    "us_label": "b5_label_859e",
+    "c": 0,
+    "val": 38381
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_BossHandlersLo",
+  "us_labels": [
+   [
+    "b5_BossHandlersLo",
+    35710
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 39807,
+  "entries": [
+   {
+    "jp_addr": 39807,
+    "kind": "lo",
+    "us_label": "b5_Boss00_EmptyRoom",
+    "c": 0,
+    "val": 102
+   },
+   {
+    "jp_addr": 39808,
+    "kind": "lo",
+    "us_label": "b5_Boss01_ManEatingPlant",
+    "c": 0,
+    "val": 107
+   },
+   {
+    "jp_addr": 39809,
+    "kind": "lo",
+    "us_label": "b5_Boss02_Torigaran",
+    "c": 0,
+    "val": 164
+   },
+   {
+    "jp_addr": 39810,
+    "kind": "lo",
+    "us_label": "b5_Boss03_PumpkinGhost",
+    "c": 0,
+    "val": 197
+   },
+   {
+    "jp_addr": 39811,
+    "kind": "lo",
+    "us_label": "b5_BossHandler04",
+    "c": 0,
+    "val": 25
+   },
+   {
+    "jp_addr": 39812,
+    "kind": "lo",
+    "us_label": "b5_Boss05_Medusa",
+    "c": 0,
+    "val": 29
+   },
+   {
+    "jp_addr": 39813,
+    "kind": "lo",
+    "us_label": "b5_Boss06_ShrimpAttack",
+    "c": 0,
+    "val": 50
+   },
+   {
+    "jp_addr": 39814,
+    "kind": "lo",
+    "us_label": "b5_Boss07_HauntedWell",
+    "c": 0,
+    "val": 75
+   },
+   {
+    "jp_addr": 39815,
+    "kind": "lo",
+    "us_label": "b5_BossHandler08",
+    "c": 0,
+    "val": 121
+   },
+   {
+    "jp_addr": 39816,
+    "kind": "lo",
+    "us_label": "b5_Boss09_GiantSpider",
+    "c": 0,
+    "val": 130
+   },
+   {
+    "jp_addr": 39817,
+    "kind": "lo",
+    "us_label": "b5_Boss10_SphinxGuardian",
+    "c": 0,
+    "val": 230
+   },
+   {
+    "jp_addr": 39818,
+    "kind": "lo",
+    "us_label": "b5_Boss11_GiantBullMan",
+    "c": 0,
+    "val": 33
+   },
+   {
+    "jp_addr": 39819,
+    "kind": "lo",
+    "us_label": "b5_BossHandler12",
+    "c": 0,
+    "val": 126
+   },
+   {
+    "jp_addr": 39820,
+    "kind": "lo",
+    "us_label": "b5_Boss13_GiantCat",
+    "c": 0,
+    "val": 135
+   },
+   {
+    "jp_addr": 39821,
+    "kind": "lo",
+    "us_label": "b5_Boss14_PunkRocker",
+    "c": 0,
+    "val": 198
+   },
+   {
+    "jp_addr": 39822,
+    "kind": "lo",
+    "us_label": "b5_Boss15_GiantSamurai",
+    "c": 0,
+    "val": 7
+   },
+   {
+    "jp_addr": 39823,
+    "kind": "lo",
+    "us_label": "b5_BossHandler16",
+    "c": 0,
+    "val": 51
+   },
+   {
+    "jp_addr": 39824,
+    "kind": "lo",
+    "us_label": "b5_Boss17_LivingDead",
+    "c": 0,
+    "val": 70
+   },
+   {
+    "jp_addr": 39825,
+    "kind": "lo",
+    "us_label": "b5_Boss18_MadJavelinMan",
+    "c": 0,
+    "val": 160
+   },
+   {
+    "jp_addr": 39826,
+    "kind": "lo",
+    "us_label": "b5_BossHandler16",
+    "c": 0,
+    "val": 54
+   },
+   {
+    "jp_addr": 39827,
+    "kind": "lo",
+    "us_label": "b5_BossHandler20",
+    "c": 0,
+    "val": 217
+   },
+   {
+    "jp_addr": 39828,
+    "kind": "lo",
+    "us_label": "b5_Boss21_ChameleonMan",
+    "c": 0,
+    "val": 226
+   },
+   {
+    "jp_addr": 39829,
+    "kind": "lo",
+    "us_label": "b5_BossHandler20",
+    "c": 0,
+    "val": 220
+   },
+   {
+    "jp_addr": 39830,
+    "kind": "lo",
+    "us_label": "b5_BossHandler20",
+    "c": 0,
+    "val": 220
+   },
+   {
+    "jp_addr": 39831,
+    "kind": "lo",
+    "us_label": "b5_BossHandler24",
+    "c": 0,
+    "val": 252
+   },
+   {
+    "jp_addr": 39832,
+    "kind": "lo",
+    "us_label": "b5_Boss25_Royce",
+    "c": 0,
+    "val": 20
+   },
+   {
+    "jp_addr": 39833,
+    "kind": "lo",
+    "us_label": "b5_Boss26_GrimReaper",
+    "c": 0,
+    "val": 118
+   },
+   {
+    "jp_addr": 39834,
+    "kind": "lo",
+    "us_label": "b5_Boss27_GiantSpiderII",
+    "c": 0,
+    "val": 138
+   },
+   {
+    "jp_addr": 39835,
+    "kind": "lo",
+    "us_label": "b5_BossHandler28",
+    "c": 0,
+    "val": 164
+   },
+   {
+    "jp_addr": 39836,
+    "kind": "lo",
+    "us_label": "b5_Boss29_GiantDragon",
+    "c": 0,
+    "val": 17
+   },
+   {
+    "jp_addr": 39837,
+    "kind": "lo",
+    "us_label": "b5_Boss30_SnakeMan",
+    "c": 0,
+    "val": 206
+   },
+   {
+    "jp_addr": 39838,
+    "kind": "lo",
+    "us_label": "b5_Boss31_HandCreature",
+    "c": 0,
+    "val": 7
+   },
+   {
+    "jp_addr": 39839,
+    "kind": "lo",
+    "us_label": "b5_Boss32_DarkWorldMaster",
+    "c": 0,
+    "val": 63
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_BossHandlersHi",
+  "us_labels": [
+   [
+    "b5_BossHandlersHi",
+    35743
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 39840,
+  "entries": [
+   {
+    "jp_addr": 39840,
+    "kind": "hi",
+    "us_label": "b5_Boss00_EmptyRoom",
+    "c": 0,
+    "val": 160
+   },
+   {
+    "jp_addr": 39841,
+    "kind": "hi",
+    "us_label": "b5_Boss01_ManEatingPlant",
+    "c": 0,
+    "val": 160
+   },
+   {
+    "jp_addr": 39842,
+    "kind": "hi",
+    "us_label": "b5_Boss02_Torigaran",
+    "c": 0,
+    "val": 160
+   },
+   {
+    "jp_addr": 39843,
+    "kind": "hi",
+    "us_label": "b5_Boss03_PumpkinGhost",
+    "c": 0,
+    "val": 160
+   },
+   {
+    "jp_addr": 39844,
+    "kind": "hi",
+    "us_label": "b5_BossHandler04",
+    "c": 0,
+    "val": 161
+   },
+   {
+    "jp_addr": 39845,
+    "kind": "hi",
+    "us_label": "b5_Boss05_Medusa",
+    "c": 0,
+    "val": 161
+   },
+   {
+    "jp_addr": 39846,
+    "kind": "hi",
+    "us_label": "b5_Boss06_ShrimpAttack",
+    "c": 0,
+    "val": 161
+   },
+   {
+    "jp_addr": 39847,
+    "kind": "hi",
+    "us_label": "b5_Boss07_HauntedWell",
+    "c": 0,
+    "val": 161
+   },
+   {
+    "jp_addr": 39848,
+    "kind": "hi",
+    "us_label": "b5_BossHandler08",
+    "c": 0,
+    "val": 161
+   },
+   {
+    "jp_addr": 39849,
+    "kind": "hi",
+    "us_label": "b5_Boss09_GiantSpider",
+    "c": 0,
+    "val": 161
+   },
+   {
+    "jp_addr": 39850,
+    "kind": "hi",
+    "us_label": "b5_Boss10_SphinxGuardian",
+    "c": 0,
+    "val": 161
+   },
+   {
+    "jp_addr": 39851,
+    "kind": "hi",
+    "us_label": "b5_Boss11_GiantBullMan",
+    "c": 0,
+    "val": 162
+   },
+   {
+    "jp_addr": 39852,
+    "kind": "hi",
+    "us_label": "b5_BossHandler12",
+    "c": 0,
+    "val": 162
+   },
+   {
+    "jp_addr": 39853,
+    "kind": "hi",
+    "us_label": "b5_Boss13_GiantCat",
+    "c": 0,
+    "val": 162
+   },
+   {
+    "jp_addr": 39854,
+    "kind": "hi",
+    "us_label": "b5_Boss14_PunkRocker",
+    "c": 0,
+    "val": 162
+   },
+   {
+    "jp_addr": 39855,
+    "kind": "hi",
+    "us_label": "b5_Boss15_GiantSamurai",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39856,
+    "kind": "hi",
+    "us_label": "b5_BossHandler16",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39857,
+    "kind": "hi",
+    "us_label": "b5_Boss17_LivingDead",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39858,
+    "kind": "hi",
+    "us_label": "b5_Boss18_MadJavelinMan",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39859,
+    "kind": "hi",
+    "us_label": "b5_BossHandler16",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39860,
+    "kind": "hi",
+    "us_label": "b5_BossHandler20",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39861,
+    "kind": "hi",
+    "us_label": "b5_Boss21_ChameleonMan",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39862,
+    "kind": "hi",
+    "us_label": "b5_BossHandler20",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39863,
+    "kind": "hi",
+    "us_label": "b5_BossHandler20",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39864,
+    "kind": "hi",
+    "us_label": "b5_BossHandler24",
+    "c": 0,
+    "val": 163
+   },
+   {
+    "jp_addr": 39865,
+    "kind": "hi",
+    "us_label": "b5_Boss25_Royce",
+    "c": 0,
+    "val": 164
+   },
+   {
+    "jp_addr": 39866,
+    "kind": "hi",
+    "us_label": "b5_Boss26_GrimReaper",
+    "c": 0,
+    "val": 164
+   },
+   {
+    "jp_addr": 39867,
+    "kind": "hi",
+    "us_label": "b5_Boss27_GiantSpiderII",
+    "c": 0,
+    "val": 164
+   },
+   {
+    "jp_addr": 39868,
+    "kind": "hi",
+    "us_label": "b5_BossHandler28",
+    "c": 0,
+    "val": 164
+   },
+   {
+    "jp_addr": 39869,
+    "kind": "hi",
+    "us_label": "b5_Boss29_GiantDragon",
+    "c": 0,
+    "val": 165
+   },
+   {
+    "jp_addr": 39870,
+    "kind": "hi",
+    "us_label": "b5_Boss30_SnakeMan",
+    "c": 0,
+    "val": 165
+   },
+   {
+    "jp_addr": 39871,
+    "kind": "hi",
+    "us_label": "b5_Boss31_HandCreature",
+    "c": 0,
+    "val": 166
+   },
+   {
+    "jp_addr": 39872,
+    "kind": "hi",
+    "us_label": "b5_Boss32_DarkWorldMaster",
+    "c": 0,
+    "val": 166
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_data_9dd0_indexed",
+  "us_labels": [
+   [
+    "b5_data_9dd0_indexed",
+    40400
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 43718,
+  "entries": [
+   {
+    "jp_addr": 43718,
+    "kind": "word",
+    "us_label": "b5_label_9dd8",
+    "c": 0,
+    "val": 43737
+   },
+   {
+    "jp_addr": 43720,
+    "kind": "word",
+    "us_label": "b5_label_9dd8",
+    "c": 0,
+    "val": 43737
+   },
+   {
+    "jp_addr": 43722,
+    "kind": "word",
+    "us_label": "b5_label_9dd9",
+    "c": 0,
+    "val": 43738
+   },
+   {
+    "jp_addr": 43724,
+    "kind": "word",
+    "us_label": "b5_label_9dd9",
+    "c": 0,
+    "val": 43738
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_data_9e00_indexed",
+  "us_labels": [
+   [
+    "b5_data_9e00_indexed",
+    40448
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 43777,
+  "entries": [
+   {
+    "jp_addr": 43777,
+    "kind": "word",
+    "us_label": "b5_label_9e0a",
+    "c": 0,
+    "val": 43787
+   },
+   {
+    "jp_addr": 43779,
+    "kind": "word",
+    "us_label": "b5_label_9e1c",
+    "c": 0,
+    "val": 43805
+   },
+   {
+    "jp_addr": 43781,
+    "kind": "word",
+    "us_label": "b5_label_9e2e",
+    "c": 0,
+    "val": 43823
+   },
+   {
+    "jp_addr": 43783,
+    "kind": "word",
+    "us_label": "b5_label_9e36",
+    "c": 0,
+    "val": 43831
+   },
+   {
+    "jp_addr": 43785,
+    "kind": "word",
+    "us_label": "b5_label_9e2e",
+    "c": 0,
+    "val": 43823
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_data_ac6e_indexed",
+  "us_labels": [
+   [
+    "b5_data_ac6e_indexed",
+    44142
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 47363,
+  "entries": [
+   {
+    "jp_addr": 47363,
+    "kind": "word",
+    "us_label": "b5_label_acaf",
+    "c": 0,
+    "val": 47424
+   },
+   {
+    "jp_addr": 47365,
+    "kind": "word",
+    "us_label": "b5_label_accd",
+    "c": 0,
+    "val": 47454
+   },
+   {
+    "jp_addr": 47367,
+    "kind": "word",
+    "us_label": "b5_label_ac7a",
+    "c": 0,
+    "val": 47371
+   },
+   {
+    "jp_addr": 47369,
+    "kind": "word",
+    "us_label": "b5_label_acd9",
+    "c": 0,
+    "val": 47466
+   }
+  ]
+ },
+ {
+  "us_bank": 5,
+  "us_label": "b5_DropTableBert",
+  "us_labels": [
+   [
+    "b5_DropTableBert",
+    45193
+   ],
+   [
+    "b5_DropTableMark",
+    45209
+   ]
+  ],
+  "jp_bank": 5,
+  "jp_addr": 48177,
+  "entries": [
+   {
+    "jp_addr": 48177,
+    "kind": "word",
+    "us_label": "b5_Drop_None",
+    "c": 0,
+    "val": 48209
+   },
+   {
+    "jp_addr": 48179,
+    "kind": "word",
+    "us_label": "b5_Drop_SmallHealth",
+    "c": 0,
+    "val": 48245
+   },
+   {
+    "jp_addr": 48181,
+    "kind": "word",
+    "us_label": "b5_Drop_BertCapsule",
+    "c": 0,
+    "val": 48239
+   },
+   {
+    "jp_addr": 48183,
+    "kind": "word",
+    "us_label": "b5_Drop_QuestionMark",
+    "c": 0,
+    "val": 48268
+   },
+   {
+    "jp_addr": 48185,
+    "kind": "word",
+    "us_label": "b5_Drop_BertCapsule",
+    "c": 0,
+    "val": 48239
+   },
+   {
+    "jp_addr": 48187,
+    "kind": "word",
+    "us_label": "b5_Drop_BertItem29",
+    "c": 0,
+    "val": 48221
+   },
+   {
+    "jp_addr": 48189,
+    "kind": "word",
+    "us_label": "b5_Drop_BertItem2A",
+    "c": 0,
+    "val": 48227
+   },
+   {
+    "jp_addr": 48191,
+    "kind": "word",
+    "us_label": "b5_Drop_BertItem2B",
+    "c": 0,
+    "val": 48233
+   },
+   {
+    "jp_addr": 48193,
+    "kind": "word",
+    "us_label": "b5_Drop_None",
+    "c": 0,
+    "val": 48209
+   },
+   {
+    "jp_addr": 48195,
+    "kind": "word",
+    "us_label": "b5_Drop_SmallHealth",
+    "c": 0,
+    "val": 48245
+   },
+   {
+    "jp_addr": 48197,
+    "kind": "word",
+    "us_label": "b5_Drop_BertCapsule",
+    "c": 0,
+    "val": 48239
+   },
+   {
+    "jp_addr": 48199,
+    "kind": "word",
+    "us_label": "b5_Drop_QuestionMark",
+    "c": 0,
+    "val": 48268
+   },
+   {
+    "jp_addr": 48201,
+    "kind": "word",
+    "us_label": "b5_Drop_SmallHealth",
+    "c": 0,
+    "val": 48245
+   },
+   {
+    "jp_addr": 48203,
+    "kind": "word",
+    "us_label": "b5_Drop_SmallHealth",
+    "c": 0,
+    "val": 48245
+   },
+   {
+    "jp_addr": 48205,
+    "kind": "word",
+    "us_label": "b5_Drop_SmallHealth",
+    "c": 0,
+    "val": 48245
+   },
+   {
+    "jp_addr": 48207,
+    "kind": "word",
+    "us_label": "b5_Drop_BigHealth",
+    "c": 0,
+    "val": 48262
+   }
+  ]
+ },
+ {
+  "us_bank": 7,
+  "us_label": "TaskEntryLo",
+  "us_labels": [
+   [
+    "TaskEntryLo",
+    49500
+   ]
+  ],
+  "jp_bank": 7,
+  "jp_addr": 49491,
+  "entries": [
+   {
+    "jp_addr": 49491,
+    "kind": "lo",
+    "us_label": "b4_TaskEntryJumps",
+    "c": -1,
+    "val": 255
+   },
+   {
+    "jp_addr": 49492,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": -1,
+    "val": 2
+   },
+   {
+    "jp_addr": 49493,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": -1,
+    "val": 2
+   },
+   {
+    "jp_addr": 49494,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 2,
+    "val": 5
+   },
+   {
+    "jp_addr": 49495,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 2,
+    "val": 5
+   },
+   {
+    "jp_addr": 49496,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 2,
+    "val": 5
+   },
+   {
+    "jp_addr": 49497,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 5,
+    "val": 8
+   },
+   {
+    "jp_addr": 49498,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 5,
+    "val": 8
+   },
+   {
+    "jp_addr": 49499,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 5,
+    "val": 8
+   },
+   {
+    "jp_addr": 49500,
+    "kind": "lo",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 5,
+    "val": 8
+   },
+   {
+    "jp_addr": 49501,
+    "kind": "lo",
+    "us_label": "Task10_Room",
+    "c": -1,
+    "val": 102
+   },
+   {
+    "jp_addr": 49502,
+    "kind": "lo",
+    "us_label": "b4_TaskEntryJumps",
+    "c": 2,
+    "val": 255
+   }
+  ]
+ },
+ {
+  "us_bank": 7,
+  "us_label": "TaskEntryHi",
+  "us_labels": [
+   [
+    "TaskEntryHi",
+    49512
+   ]
+  ],
+  "jp_bank": 7,
+  "jp_addr": 49503,
+  "entries": [
+   {
+    "jp_addr": 49503,
+    "kind": "hi",
+    "us_label": "b4_TaskEntryJumps",
+    "c": -1,
+    "val": 127
+   },
+   {
+    "jp_addr": 49504,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": -1,
+    "val": 128
+   },
+   {
+    "jp_addr": 49505,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": -1,
+    "val": 128
+   },
+   {
+    "jp_addr": 49506,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 2,
+    "val": 128
+   },
+   {
+    "jp_addr": 49507,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 2,
+    "val": 128
+   },
+   {
+    "jp_addr": 49508,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 2,
+    "val": 128
+   },
+   {
+    "jp_addr": 49509,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 5,
+    "val": 128
+   },
+   {
+    "jp_addr": 49510,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 5,
+    "val": 128
+   },
+   {
+    "jp_addr": 49511,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 5,
+    "val": 128
+   },
+   {
+    "jp_addr": 49512,
+    "kind": "hi",
+    "us_label": "b5_TaskEntryJumps",
+    "c": 5,
+    "val": 128
+   },
+   {
+    "jp_addr": 49513,
+    "kind": "hi",
+    "us_label": "Task10_Room",
+    "c": -1,
+    "val": 211
+   },
+   {
+    "jp_addr": 49514,
+    "kind": "hi",
+    "us_label": "b4_TaskEntryJumps",
+    "c": 2,
+    "val": 127
+   }
+  ]
+ },
+ {
+  "us_bank": 7,
+  "us_label": "SoundCommandHandlers",
+  "us_labels": [
+   [
+    "SoundCommandHandlers",
+    53043
+   ]
+  ],
+  "jp_bank": 7,
+  "jp_addr": 52996,
+  "entries": [
+   {
+    "jp_addr": 52996,
+    "kind": "word",
+    "us_label": "SoundCmd_00",
+    "c": -1,
+    "val": 52811
+   },
+   {
+    "jp_addr": 52998,
+    "kind": "word",
+    "us_label": "SoundCmd_01",
+    "c": -1,
+    "val": 52723
+   },
+   {
+    "jp_addr": 53000,
+    "kind": "word",
+    "us_label": "SoundCmd_02",
+    "c": -1,
+    "val": 52817
+   },
+   {
+    "jp_addr": 53002,
+    "kind": "word",
+    "us_label": "SoundCmd_03",
+    "c": -1,
+    "val": 52835
+   },
+   {
+    "jp_addr": 53004,
+    "kind": "word",
+    "us_label": "SoundCmd_04",
+    "c": -1,
+    "val": 52846
+   },
+   {
+    "jp_addr": 53006,
+    "kind": "word",
+    "us_label": "SoundCmd_05",
+    "c": -1,
+    "val": 52842
+   },
+   {
+    "jp_addr": 53008,
+    "kind": "word",
+    "us_label": "SoundCmd_06",
+    "c": -1,
+    "val": 52852
+   },
+   {
+    "jp_addr": 53010,
+    "kind": "word",
+    "us_label": "SoundCmd_07",
+    "c": -1,
+    "val": 52861
+   },
+   {
+    "jp_addr": 53012,
+    "kind": "word",
+    "us_label": "SoundCmd_08",
+    "c": -1,
+    "val": 52870
+   },
+   {
+    "jp_addr": 53014,
+    "kind": "word",
+    "us_label": "SoundCmd_08",
+    "c": -1,
+    "val": 52870
+   },
+   {
+    "jp_addr": 53016,
+    "kind": "word",
+    "us_label": "SoundCmd_08",
+    "c": -1,
+    "val": 52870
+   },
+   {
+    "jp_addr": 53018,
+    "kind": "word",
+    "us_label": "SoundCmd_08",
+    "c": -1,
+    "val": 52870
+   },
+   {
+    "jp_addr": 53020,
+    "kind": "word",
+    "us_label": "SoundCmd_12",
+    "c": -1,
+    "val": 52501
+   },
+   {
+    "jp_addr": 53022,
+    "kind": "word",
+    "us_label": "SoundCmd_13",
+    "c": -1,
+    "val": 52515
+   },
+   {
+    "jp_addr": 53024,
+    "kind": "word",
+    "us_label": "SoundCmd_14",
+    "c": -1,
+    "val": 52488
+   },
+   {
+    "jp_addr": 53026,
+    "kind": "word",
+    "us_label": "SoundCmd_15",
+    "c": -1,
+    "val": 52832
+   },
+   {
+    "jp_addr": 53028,
+    "kind": "word",
+    "us_label": "SoundCmd_16",
+    "c": -1,
+    "val": 52540
+   },
+   {
+    "jp_addr": 53030,
+    "kind": "word",
+    "us_label": "SoundCmd_17",
+    "c": -1,
+    "val": 52528
+   },
+   {
+    "jp_addr": 53032,
+    "kind": "word",
+    "us_label": "SoundCmd_18",
+    "c": -1,
+    "val": 52459
+   }
+  ]
+ }
+]

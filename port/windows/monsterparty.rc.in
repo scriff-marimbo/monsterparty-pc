@@ -1,0 +1,27 @@
+// Windows resources for monsterparty.exe (configured by CMakeLists.txt into the build folder).
+@MP_ICON_LINE@
+1 24 "@MP_MANIFEST@"
+
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEOS 0x40004
+FILETYPE 0x1
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "FileDescription", "Monster Party (PC)"
+      VALUE "InternalName", "monsterparty"
+      VALUE "OriginalFilename", "monsterparty.exe"
+      VALUE "ProductName", "Monster Party: Let's Go Again"
+      VALUE "FileVersion", "1.0.0.0"
+      VALUE "ProductVersion", "1.0.0.0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x409, 1200
+  END
+END

@@ -1,0 +1,523 @@
+# RAM / label names for the Monster Party disassembly. Apply with:
+#     python3 tools/apply_names.py monsterparty tools/names.txt
+# then ./monsterparty/build.sh to confirm the ROM is still byte-identical.
+# Safe to re-run; add new lines as you discover things.
+#
+# RAM:    $ADDR  Name  [size]   ; comment
+#         Bytes inside a multi-byte variable become Name+1, Name+2, ...
+#         Name may also be an expression (e.g. BossDefeated-1) to alias an address
+#         that the code uses as an array base.
+#         label OldName Table+1 likewise makes a label an offset into another (its definition line is removed).
+# Labels: label OldName NewName ; comment
+#         at bankN $ADDR Name ; comment   (new label where there is none yet)
+
+$004C GameMode            ; 00=in game, 08=player died (-> continue screen), 10=entering a door / room change, 40=round complete (boss beaten), 80=title/password entry
+$004D GameState           ; 00=title, 02=continue screen, 03-04=pre-round, 05=in game (unconfirmed)
+$0051 DoorId              ; door/room id; stable for a given round
+$0052 BossRoomFlag        ; bit 7 set = in a boss room (enemy tasks run boss code; a boss hit costs the player 2 health instead of 1)
+$0056 BossIdInRound       ; which of the round's bosses this room holds, 1-3 (0 = none). From the door data; its defeated flag is BossDefeated-1+n
+$0057 BossId              ; RoundNumber*4 + BossIdInRound (also the boss task's TaskArg0 -> b5_BossHandlersLo/Hi). $0D Giant Cat, $0E Punk Rocker, $15 Chameleon Man, etc.
+$005A BossDefeated 3      ; $80 = boss 1/2/3 of this round defeated
+$0059 BossDefeated-1      ; code indexes the flags as BossDefeated-1,X with X = 1..3
+$03E0 ObjX+10            ; object 10 X (written directly by b4_PlaceObject10)
+$03D5 ObjY+10            ; object 10 Y
+$008A ScoreDigits 6       ; one decimal digit per byte, tens first (ones digit is always 0 on screen)
+$0090 HiScoreDigits 6     ; same layout as ScoreDigits
+$0097 RoundNumber         ; 0 = round 1, 1 = round 2, etc
+$009E PlayerHealth        ; $2C = full
+$0360 TaskCounter          ; per-task field. Bosses: HP (boss = $0366, forms 2/3 = $0367/$0368). Normal enemies: animation step (b5_Enemy_Animate).
+                          ; Other tasks reuse it as a counter (e.g. animation step at b5 $86EA).
+
+# Object arrays: 11 entries each, index 0 = player. DrawObject reads them per object.
+$03CB ObjY                ; vertical position (copied to sprite Y in DrawObject)
+$03D6 ObjX                ; horizontal position (copied to sprite X in DrawObject)
+$0423 ObjAttr             ; sprite attribute bits; $40 = flipped horizontally (player: $00 = right, $40 = left)
+$03C0 ObjFlags            ; bit 7 = object active (drawn only if this and ObjDrawFlags bit 7 are set); other bits used per object
+$0418 ObjDrawFlags        ; bit 7 = visible; low bits pick the graphics set (combined with RoundNumber in DrawObject)
+$040D ObjXHi              ; high byte / screen of X; nonzero = off screen, sprites hidden
+$042E ObjFrame            ; metasprite / animation frame. Player: 1-2 = bat swing, 3-4 = walking, 6-7 = crawling
+
+label b5_data_8f79_indexed b5_BossStartHealth ; HP given to an boss task at spawn
+$02FF TaskState-1         ; InitGame indexes TaskState as TaskState-1,X with X = 12..1
+$045E RngState-1         ; b4_Title_SeedRandom indexes RngState as RngState-1,Y with Y = 8..1
+label _label_c0f6 InitGame_FreeAllTasks ; Writes $FF to TaskState for all 12 slots (X counts down 12..1), marking every task slot free.
+label _label_c19f StartTask_InitSlot ; Free slot found: copy args, clear the slot's per-task fields, mark it live. Runs once at boot (InitGame starts task 11) and again for every later spawn.
+
+# ---- bank 4: game flow (task slot 11) and screens
+$032F ScreenId            ; which screen b4_ShowScreen sets up: 0 = boot (goes straight to 1), 1 = title, 2 = password, 3 = new-game intro story. Lives in task slot 11's TaskArg1 field.
+label b4_label_9235 b4_GameFlow_PreGame ; GameState < 5: title / password / continue screens (b4_ShowScreen), or GameState 4 = start the round.
+label b4_label_9248 b4_GameFlow_StartRound ; GameMode = 0, GameState = 5, clear object arrays, StartTask 10.
+label b4_label_9268 b4_GameFlow_InGame ; GameState >= 5
+label b4_label_9276 b4_GameFlow_ModeChange ; GameMode has $08 (died), $10 (door) or $40 (round complete): stop tasks, restart task 11, pick the next screen
+label b4_func_930e b4_StopTasks0to10
+label b4_func_92aa b4_ChooseNextScreen ; screen 5, 6, 7 or 9 depending on flags in $03 and RoundNumber (7 -> 7, 8 -> 9). Not yet confirmed which is which.
+label b4_func_92c5 b4_ResetScreenState ; stop sound, reset scroll, CHR banks and PPU state, hide sprites, clear nametables
+label b4_label_931c b4_CheckPause ; Start pressed in game: pause the music, play the pause sound ($3D), wait for Start again, resume
+label b4_label_932b b4_PauseLoop
+label b4_label_925a b4_StartRound_ClearObjects ; zero all object arrays ($03C0-$0443), Y counts $84..1
+$03BF ObjFlags-1          ; b4_StartRound_ClearObjects indexes from here
+label b4_label_9445 b4_RoundStart_SetValues ; per-round values from 9-entry tables indexed by RoundNumber
+label b4_func_9339 b4_ApplyRoundStartValues ; copy the round-start values $6A-$6D into the live ones ($4F, $50, DoorId, BossIdInRound)
+label b4_label_9240 b4_GameFlow_CheckStartRound ; GameState 1-4: 4 = start the round, otherwise show screen ScreenId.
+label TitleMenuChoice MenuChoice
+$0353 MenuChoice          ; menu cursor (task slot 11's field). Title: 0 = new game (-> intro story), else password. Game over: 0 = continue, else back to title.
+
+# screen handlers (b4_ScreenHandlerPtrs, indexed by ScreenId)
+at bank4 $950C b4_Screen0_Boot ; ScreenId++ and show screen 1 (title)
+at bank4 $9512 b4_Screen1_Title ; Seed the RNG, reset game variables and score, then run the title loop until A or Start.
+at bank4 $9403 b4_Screen2_Password
+at bank4 $9412 b4_Screen3_IntroStory
+label b4_Screen4_RoundSetup b4_Screen4_RoundStart
+at bank4 $941B b4_Screen4_RoundStart ; ROUND n START screen: reset door/boss flags, set this round's start values, GameState = 4
+label b4_Screen5 b4_Screen5_InGame
+at bank4 $9476 b4_Screen5_InGame ; in-game screen: also re-shown after entering a door
+label b4_Screen6 b4_Screen6_GameOver
+at bank4 $9489 b4_Screen6_GameOver ; GAME OVER: continue (health = $0C, back to the ROUND START screen; round 9 restarts at round 8) or return to title
+at bank4 $94DC b4_Screen7
+at bank4 $9505 b4_Screen8_BackToTitle ; never seen running (bytes not in the CDL): GameMode = GameState = 0
+at bank4 $AC3D b4_Screen9
+
+# title screen
+label b4_label_9516 b4_Title_SeedRandom ; RngState[0..7] = $5B (loop runs 8 times)
+label b4_label_9551 b4_Title_Loop
+label b4_func_958a b4_TitleMonsterParade ; Monsters walk right-to-left across the title screen one after another (object 0, 7 monsters cycling).
+label b4_label_95c5 b4_TitleMonsterParade_Update
+label b4_label_95d9 b4_TitleMonsterParade_MoveLeft ; ObjX-- (with ObjXHi borrow); hide the monster once it is off the left edge.
+label b4_label_9604 b4_TitleMonsterParade_Pause ; short wait, then pick the next monster
+
+# intro / ending story
+$05C2 StoryTextFlags      ; bit 7 = clearing text box, bit 5 = waiting for button, bit 4 = prompt shown
+label b4_func_9c88 b4_IntroStory ; Runs the scene script until the scene index ($21) goes negative or Start is pressed (Start skips the intro). $21 = scene, $22 = step within it; both are zero-page temps reused elsewhere, so not named.
+label b4_jump_engine_9ce8 b4_RunStoryScene
+label b4_jump_table_9cf9 b4_StorySceneTable
+label b4_func_9ef3 b4_DrawScenePicture ; picture for the current StoryScene
+label b4_func_9ef8 b4_DrawCutscenePicture ; A = picture id; drawn as one big metasprite at X $80, Y $60
+label b4_func_aeba b4_UpdateStoryText
+label b4_label_b0ac b4_ClearTextBox ; blanks the story text box a couple of rows per frame (copies a row of $01 tiles from bank 6 $A692)
+label b4_label_b0be b4_ClearTextBox_Next
+label b4_label_b0d0 b4_ClearTextBox_QueueRows
+label b4_func_b0dd b4_SetTextBoxDest ; text box = PPU $2246, 20 tiles wide
+label b4_func_9ea4 b4_LoadSceneGraphics ; between scenes: queue the scene's tile stripes, then upload its background block (16 tiles wide, PPU $20C8) over 3 frames
+label b4_label_9ebc b4_LoadSceneGraphics_CopyStripes
+$049C VramStripeBuf-1     ; b4_LoadSceneGraphics indexes from here
+label b4_data_ab2a_indexed b4_SceneStripePtrs ; per-scene tile stripe data
+label b4_data_ab2b_indexed b4_SceneStripePtrs+1
+label b4_data_ac1b_indexed b4_SceneBgPtrs ; per-scene background block
+label b4_data_ac1c_indexed b4_SceneBgPtrs+1
+label b4_label_9e19 b4_StoryScene5_Fusion ; last intro scene: pages $0D and $0E ("Like this!" / "Then they fused together.")
+label b4_label_9e36 b4_FusionFlash ; while the text is up, swap the sprite palettes every 4 frames so Bert and Mark flash
+label b4_label_9e45 b4_FusionFlash_Pick
+label b4_func_9e4e b4_SetFlashPalette ; X = 0/1: copy 12 bytes of b4_FusionFlashPalettes into the sprite palettes
+label b4_label_9e59 b4_SetFlashPalette_Copy
+label b4_label_9e69 b4_StoryScene5_WaitEnd ; text finished -> scene index = $FF (intro over)
+label b4_data_9e73_indexed b4_FusionFlashPalettes ; 2 x 12 bytes (4 sprite palettes, 3 colours each)
+$0478 PaletteBuffer+12    ; sprite palettes part of PaletteBuffer
+label b4_func_b16a b4_StoryWaitPrompt ; While waiting for a button: blink the continue arrow (sprite tile $7C). Carry set = still waiting.
+label b4_label_ae4f b4_StoryScene16_Door ; ending: story page $17, then the door opens one picture at a time ($29-$2E, one every 50 frames)
+label b4_label_ae5e b4_StoryScene16_Step ; every frame after the first: once picture $2E (door open, Bert behind it) is up and the text is done, go to scene 17 and set BG palettes 1 and 3 and sprite palettes 1-2
+label b4_label_ae92 b4_StoryScene16_NextPicture
+label b4_label_aea4 b4_StoryScene17 ; story page $18
+label b4_func_934a b4_ShowScreen ; Silence/reset sound, clear nametables, queue the screen layout, set CHR banks from b4_ScreenSetupTable[ScreenId], wait 3 frames, then jump to that screen's handler.
+label b4_data_939f_indexed b4_ScreenSetupTable ; 8 bytes per screen, 10 screens: VRAM script lo/hi, VRAM script bank, ?, CHR0 bank, CHR1 bank, ?, fill tile
+label b4_data_93a0_indexed b4_ScreenSetupTable+1
+label b4_data_93a1_indexed b4_ScreenSetupTable+2
+label b4_data_93a2_indexed b4_ScreenSetupTable+3
+label b4_data_93a3_indexed b4_ScreenSetupTable+4
+label b4_data_93a4_indexed b4_ScreenSetupTable+5
+label b4_data_93a5_indexed b4_ScreenSetupTable+6
+label b4_data_93a6_indexed b4_ScreenSetupTable+7
+label b4_data_93ef_indexed b4_ScreenHandlerPtrs ; per-screen handler address minus 1 (RTS trick), 2 bytes each, indexed by ScreenId
+label b4_data_93f0_indexed b4_ScreenHandlerPtrs+1
+
+# ---- bank 4: password screen
+$00A9 PasswordChars 9     ; entered password characters (negative = empty)
+label b4_func_98ea b4_SetPasswordChar ; Store char A at position Y in PasswordChars and redraw it (empty = blank tile).
+label b4_func_98f2 b4_DrawPasswordChar ; Work out the PPU address for position Y (gap every 3 chars) and queue the tile(s).
+label b4_data_9a05_indexed b4_PasswordCharTiles ; password char -> font tile; bit 7 = also draw a mark tile in the row above
+label b4_func_b075 b4_QueueVramTile ; Queue one tile write: A = tile, X/Y = PPU address lo/hi, into VramStripeBuf for the next NMI.
+
+# ---- sound (fixed bank engine)
+$002D SoundTablePtr 2     ; points to the sound list: 3 bytes per sound (channel, data lo, data hi)
+$0100 SoundChannelSound   ; per channel: sound playing + 1 (0 = idle)
+label _func_cbf5 PlaySound ; A = sound/music id; bit 7 = start even if that channel is busy. Called for music, SFX on attacks, enemies, pickups...
+label _label_cc11 PlaySound_Start ; set up the channel and its data pointer
+label _label_cc49 PlaySound_Done ; channel busy with a non-forced sound: skip
+label _func_cbe8 PlaySoundRange ; play sounds A .. A+Y-1 (starts every channel of a song)
+label _func_cbbb PauseSound ; set the pause bit on all 8 channels
+label _func_cbd0 ResumeSound
+label _label_cb97 InitSound_SetDefaults ; first loop of InitSound (X = 4..1)
+label _label_cba7 InitSound_ResetChannels ; second loop (X = 8..0), one pass per sound channel
+label _data_cbb6_indexed InitSound_DefaultsTable ; the first byte ($60) is InitSound's own RTS; X = 1..4 reads the 4 bytes after it
+label _label_d562 MaybeEnterDoor ; probably: GameMode = $10 (room change) unless _func_d949 returns carry set. Inferred from a door entry triggering b4_GameFlow_ModeChange.
+
+# ---- collision detection (fixed bank)
+$03E1 ObjHitBy            ; index of the object this one last collided with
+$03EC ObjHitboxH          ; half-height of the hitbox (vertical overlap test)
+$03F7 ObjHitboxW          ; half-width of the hitbox (horizontal overlap test)
+label _label_c06a WaitNextFrame_WaitNmi ; spins (calling UpdateRandom) until the NMI sets NmiDoneFlag; runs every frame in every mode
+label _func_c78d CheckAllCollisions ; Every frame, split over two frames by FrameCounter bit 0. Lowers the player's hitbox by 8 while flag $20 of $0330 is set (probably crouching).
+label _label_c79d CheckAllCollisions_Setup
+label _label_c7b9 CheckAllCollisions_EvenFrame ; objects 1-2 against 6-9 (only object 1 against 6-8 when BossId = $1D)
+label _label_c7dd CheckAllCollisions_Obj10 ; object 10 against 6-9
+label _label_c7f1 CheckAllCollisions_OddFrame ; player (0) against 6-9, player against 3-5, object 10 against 3-5, objects 3-5 against 6-9
+label _func_c84c CheckCollisionsAgainst ; X = object, Y = first other object, A = how many. On a hit: ObjFlags,X |= $18 value, ObjFlags,Y |= $19 value, and both record each other in ObjHitBy.
+label _func_c88e ObjectsOverlap ; carry clear = the two hitboxes overlap (|dY| < HitboxH sum and |dX| < HitboxW sum)
+
+# ---- menus (title / game over)
+label b4_label_949d b4_GameOver_Loop
+label b4_func_9630 b4_MenuCursorInput ; move MenuChoice with the d-pad/Select, wrapping at the count in $18
+label b4_func_9668 b4_DrawMenuCursor ; draw the skull cursor sprite next to option A (X picks the screen's cursor positions); animates with $0347
+label b4_func_9653 b4_WaitForAOrStart
+
+# ---- player damage (bank 4)
+label b4_func_878a b4_PlayerHit ; player touched something: ignore if invincible, else take damage (2 if hit by the boss in a boss room)
+label b4_label_87a7 b4_PlayerTakeDamage ; PlayerHealth-- (min 0), hurt sound $86, knockback state
+
+# ---- enemies (bank 5): every enemy task (slots 6-9) runs the same code; per-type behaviour via tables
+$0384 TaskEnemyType       ; enemy type for enemy tasks (copied from TaskArg0 at spawn); indexes the per-type tables
+label b5_Task6to9_Main b5_EnemyTask ; enemy/boss task (slots 6-9). BossRoomFlag bit 7 -> boss code at $8A8E.
+label b5_label_801a b5_Enemy_Init ; first frame: type, facing (+1/-1 from spawn X), hitbox and other per-type values
+label b5_label_80b9 b5_Enemy_Update ; every frame
+label b5_label_80c0 b5_Enemy_Dying ; enemy is dying (flag bit set): count TaskMode down every other frame; when it reaches 0, remove the enemy ($82C9)
+label b5_label_811c b5_Enemy_CheckRemove ; flag set: deactivate, clear TaskEnemyType, call b5_func_a594
+label b5_label_8134 b5_Enemy_Behaviour
+label b5_label_8141 b5_Enemy_RunTypeAI ; run the shared step, then jump to this type's handler (b5_EnemyAITable[type-1])
+label b5_label_815d b5_Enemy_RunTypeAI2 ; second per-type handler table (b5_EnemyAITable2)
+label b5_data_81bb_indexed b5_EnemyAITable
+label b5_data_81bc_indexed b5_EnemyAITable+1
+label b5_data_8172_indexed b5_EnemyAITable2
+label b5_data_8173_indexed b5_EnemyAITable2+1
+label b5_data_866d_indexed b5_EnemyHitboxTable ; 2 bytes per type: ObjHitboxH, ObjHitboxW
+label b5_data_866e_indexed b5_EnemyHitboxTable+1
+label b5_func_8d22 b5_DamageEnemy ; TaskHealth -= 1; or 3 from round 5 on, unless the hit came from object 10 (the bat, probably - so reflected shots hit harder)
+label b5_label_8d33 b5_DamageEnemy_Apply ; add X (negative) to TaskHealth, clamp at 0
+label b5_label_8d3e b5_DamageEnemy_Store
+label b5_func_8cfc b5_FlashPalette ; alternate palette A with the normal one ($044D) for Y x 2 frames
+label b5_data_9534_indexed b5_BossAnimFrames_9534 ; 3 animation frames used by the boss code at $94E6
+at bank5 $9537 b5_Boss_LoadGfx ; ObjFrame = $1A, PlayfieldChr0Bank = 2, SetPalette $18. Reached through a jump table (no direct calls); which boss is unconfirmed.
+
+# ---- palettes (fixed bank)
+label _func_c8bb SetPalette ; A = palette id; starts dark ($044C = $C0)
+label _func_c8ce FadePalette ; step the palette brightness by $10 every X frames until it reaches Y
+
+# ---- playing as Bert (bank 4, player task)
+$005E PlayerForm          ; bit 7 set = playing as Bert
+$0054 BertTimer           ; while Bert: +1 every 64 frames; warning (sound $82, palette flicker) from $19; at $23 -> back to Mark. Reset to 1 by another capsule.
+$033C TaskMode            ; per-task mode/state. Player: 3 = hurt knockback, 4 = transforming (Mark <-> Bert)
+label b4_label_8042 b4_Bert_UpdateTimer ; only while PlayerForm bit 7 is set
+label b4_label_804a b4_Bert_WarnFlash ; BertTimer $19-$26: sound $82 every 32 frames, palette flicker every 16
+label b4_label_8078 b4_Bert_CheckTimeUp ; BertTimer reaches $23: set it to 1 and b4_ToggleBert (back to Mark)
+label b4_func_887d b4_ToggleBert ; transform sound ($88/$89), flip PlayerForm bit 7, TaskMode = 4 (transforming)
+label b4_label_88a9 b4_ToggleBert_ToMark
+label b4_func_9082 b4_PlayerPickUpItem ; touched an item object: sound 1, then handler for item (ObjFrame - $29)
+label b4_jump_table_90ad b4_ItemHandlers ; one per item type, 9 entries (ObjFrame $29-$31)
+label b4_label_90d2 b4_Item_BertCapsule ; already Bert: BertTimer = 1 (more time); else b4_ToggleBert
+label b4_label_9071 b4_PlaceObject10 ; object 10 positioned beside the player (X offset, Y + 2): probably the bat's hitbox
+label b4_label_9280 b4_GameFlow_FadeOutAndRestart ; fade out, reset the screen, restart task 11, choose the next GameState / screen
+
+# ---- score (fixed bank)
+label _func_ca45 DrawScore ; queue a 7-tile stripe of score digits (+ trailing 0): A/X = PPU address lo/hi, Y = 0 score / 6 high score
+label _func_ca33 DrawScoreAndHiScore ; at PPU $2348 and $2368
+label _func_ca08 ResetHiScoreAndScore ; default high score 200,000, then ClearScore
+label _func_ca0c ClearScore
+label _func_ca91 AddScore ; Y = 6 x index into PointsTable; caps at 999,990; updates the high score
+label _func_caf5 AddScoreDigits ; decimal add, one digit per byte; carry set = overflow
+label _func_caaa UpdateHiScore
+label _func_cacc CompareScores
+label _data_cb45_indexed PointsTable ; 6 digits per entry: 100,200,300,400,500,1000,2000,5000,10000,20000,30000,40000
+label _data_cb46_indexed PointsTable+1
+label _data_cb47_indexed PointsTable+2
+label _data_cb48_indexed PointsTable+3
+label _data_cb49_indexed PointsTable+4
+label _data_cb4a_indexed PointsTable+5
+
+# ---- enemy movement / animation (bank 5)
+$0378 TaskPatrolDist      ; enemy: steps to walk before turning round (set to $50 at init)
+label b5_func_8205 b5_EnemyPatrol ; shared by many enemy types: move on 3 frames out of 4, turn round after TaskPatrolDist steps
+label b5_label_820c b5_EnemyPatrol_Step
+label b5_func_86d9 b5_Enemy_Animate ; next frame from this type's list (b5_EnemyAnimPtrs); $FF in the list loops back
+label b5_label_86f8 b5_Enemy_Animate_Next
+label b5_data_8706_indexed b5_EnemyAnimPtrs
+label b5_data_8707_indexed b5_EnemyAnimPtrs+1
+
+# ---- enemy death and drops (bank 5). The dead enemy's own object turns into the item.
+$0354 TaskDropKind        ; what an enemy drops. Set at enemy init from the low 2 bits of its spawn Y, so only 0-3 happen; the boss "?" uses 3. Drop table entries 4-7 are unreachable.
+$005D SmallHealthDrops    ; small-health drops this round (max 8, reset at ROUND START)
+$005F BertWeapon          ; UNUSED weapon power-up: 3 weapons x 3 levels (A 0-2, B 3-5, C 6-8), set by the never-dropped items $29/$2A/$2B. Copied into the Bert shot task's $03B4 (b5 $9D8F) but never read there; the shot pattern comes from the round (_data_d3c3). Only other read: b5 $84E2 instant kill if $0C, which can't happen. Reset to 0 on new game / continue.
+label b5_func_a594 b5_Enemy_Die ; death "pop" movement for 48 frames, then b5_SpawnDrop
+label b5_func_b039 b5_SpawnDrop ; set ObjFrame to the item for TaskDropKind (Mark and Bert have different tables)
+label b5_jump_table_b099 b5_DropTableMark ; 0 none, 1 small health, 2 Bert capsule, 3 "?"; 4-6 small health, 7 big health are unreachable (enemies only get 0-3)
+label b5_jump_table_b089 b5_DropTableBert ; 0 none, 1 small health, 2 capsule, 3 "?"; 4 capsule and 5-7 weapon items $29/$2A/$2B are unreachable (enemies only get 0-3)
+label b5_label_b0a9 b5_Drop_None
+label b5_Drop_BertItem29 b5_Drop_WeaponA ; unused: item $29
+label b5_Drop_BertItem2A b5_Drop_WeaponB ; unused: item $2A
+label b5_Drop_BertItem2B b5_Drop_WeaponC ; unused: item $2B
+label b5_label_b0c7 b5_Drop_BertCapsule ; frame $2F
+label b5_label_b0cd b5_Drop_SmallHealth ; frame $2C, only while SmallHealthDrops < 8 (else nothing)
+label b5_label_b0de b5_Drop_BigHealth ; frame $2E
+label b5_label_b0e4 b5_Drop_QuestionMark ; frame $2D
+
+# ---- boss defeated (bank 5)
+$0058 BossesLeft          ; bosses still to beat this round (from b4_BossesPerRound at ROUND START)
+label b4_data_945b_indexed b4_BossesPerRound ; rounds 1-9: 3,3,3,3,2,1,2,3,1
+label b5_label_8bff b5_BossDefeated ; sound $2F, palette flash, then b5_BossDefeated_Reward
+label b5_func_8c16 b5_BossDefeated_Reward ; points (b5_BossPoints), clear other objects and tasks 3-9, set BossDefeated flag, BossesLeft--, spawn the "?"
+label b5_data_90dd_indexed b5_BossPoints ; per boss: AddScore index (Y)
+label b5_label_8c95 b5_BossDefeated_NotFinal ; sound $81, then _func_d902
+label b5_func_8caf b5_SpawnQuestionMark ; object 6 at X $80, Y $88 with TaskDropKind 3 -> "?" item
+label b5_func_8ca7 b5_MaybeSpawnQuestionMark ; 1 in 8 (RngState bits)
+label b5_label_8ce1 b5_BossLeaves ; probably the bosses that leave without a fight: 1-in-8 chance of a "?"
+
+# ---- items the player collects (bank 4): handler = b4_ItemHandlers[ObjFrame - $29]
+label b4_Item29_BertPower b4_Item29_WeaponA ; unused item (orb): weapon A, levels 0 -> 1 -> 2; from weapon B or C, back to A level 1 (0)
+label b4_Item2A_BertWeapon b4_Item2A_WeaponB ; unused item (framed gem): weapon B, levels 3 -> 4 -> 5; from A or C, B level 1 (3)
+label b4_Item2B_BertWeapon b4_Item2B_WeaponC ; unused item (wrapped, candy-like): weapon C, levels 6 -> 7 -> 8; from A or B, C level 1 (6)
+label b4_data_9160_indexed b4_WeaponBNext ; BertWeapon -> BertWeapon after picking up item $2A
+label b4_data_9180_indexed b4_WeaponCNext ; BertWeapon -> BertWeapon after picking up item $2B
+label b4_label_90f0 b4_Item2C_SmallHealth ; PlayerHealth +2 (max $2C)
+label b4_label_918c b4_Item2D_QuestionMark ; random outcome from FrameCounter & 15 (b4_QuestionMarkOutcomes)
+label b4_label_910c b4_Item2E_BigHealth ; PlayerHealth +4
+label b4_Item_BertCapsule b4_Item2F_BertCapsule
+label b4_label_9128 b4_Item_Nothing
+label b4_func_9220 b4_RemoveTouchedItem ; clear the item object and stop its task
+label b4_data_91aa_indexed b4_QuestionMarkOutcomes ; 16 entries: 6x 2,000 pts, 3x 5,000, 2x 10,000, 2x +4 health, 1x +8 health, 2x Bert capsule
+label b4_data_91ab_indexed b4_QuestionMarkOutcomes+1
+at bank4 $91ED b4_QM_10000Points
+at bank4 $91F7 b4_QM_5000Points
+at bank4 $9201 b4_QM_2000Points
+at bank4 $9212 b4_QM_Health8 ; +8 health (never collected in the CDL, so still bytes)
+
+# ---- boss handlers (bank 5): b5_RunBossHandler jumps to the handler for TaskArg0 (boss type 0-32)
+label b5_label_8b10 b5_RunBossHandler ; per-frame boss update: jump through b5_BossHandlersLo/Hi[TaskArg0]
+label b5_jump_engine_8b39 b5_JumpToBossHandler
+label b5_label_8a8e b5_BossTask ; boss-room enemy task: on its first frame set up the boss from the per-type tables and call b5_BossInitLo/Hi[TaskArg0]; after that b5_RunBossHandler
+label b5_data_8b3c_indexed b5_BossInitLo ; per boss type: one-time setup routine, called through b5_JumpToBossHandler when the boss spawns (33 entries; most point at an rts)
+label b5_data_8b5d_indexed b5_BossInitHi
+label b5_label_9280 b5_Boss09_Init ; TaskPatrolDist = 2
+label b5_label_9390 b5_Boss13_Init ; ObjFrame = $10
+label b5_label_93d4 b5_Boss14_Init ; rts only
+label b5_label_957e b5_Boss20_Init ; boss types 20, 22, 23: rts only
+label b5_label_9582 b5_Boss21_Init ; Chameleon Man, each of its 4 tasks: sprite CHR bank 6, TaskMode = $3F; instances 1-3 set ObjFlags bit 6; position from b5_Boss21_StartY/X[CurrentTaskInstance]
+label b5_label_9597 b5_Boss21_Init_SetPos
+label b5_data_95a4_indexed b5_Boss21_StartY ; per instance 0-3
+label b5_data_95a8_indexed b5_Boss21_StartX ; per instance 0-3
+label b5_data_8b7e_indexed b5_BossHandlersLo
+label b5_data_8b9f_indexed b5_BossHandlersHi
+label b5_label_90ff b5_BossHandler00 ; boss type 0
+label b5_label_9104 b5_BossHandler01 ; boss type 1
+label b5_label_913d b5_BossHandler02 ; boss type 2
+label b5_label_915e b5_BossHandler03 ; boss type 3
+label b5_label_91b2 b5_BossHandler04 ; boss type 4
+label b5_label_91b6 b5_BossHandler05 ; boss type 5
+label b5_label_91cb b5_BossHandler06 ; boss type 6
+label b5_label_9200 b5_BossHandler07 ; boss type 7
+label b5_label_927d b5_BossHandler08 ; boss type 8
+label b5_label_9286 b5_BossHandler09 ; boss type 9; never ran in the CDL (converted from bytes)
+label b5_label_92ea b5_BossHandler10 ; boss type 10
+label b5_label_9330 b5_BossHandler11 ; boss type 11
+label b5_label_938d b5_BossHandler12 ; boss type 12
+label b5_label_9396 b5_BossHandler13 ; boss type 13
+label b5_label_93d5 b5_BossHandler14 ; boss type 14
+label b5_label_9416 b5_BossHandler15 ; boss type 15
+label b5_label_9476 b5_BossHandler16 ; boss types 16, 19
+label b5_label_949c b5_BossHandler17 ; boss type 17
+label b5_label_9546 b5_BossHandler18 ; boss type 18
+label b5_label_957f b5_BossHandler20 ; boss types 20, 22, 23; never ran in the CDL (converted from bytes)
+label b5_label_95ac b5_BossHandler21 ; boss type 21; never ran in the CDL (converted from bytes)
+label b5_label_962a b5_BossHandler24 ; boss type 24
+label b5_label_9642 b5_BossHandler25 ; boss type 25
+label b5_label_96a4 b5_BossHandler26 ; boss type 26
+label b5_label_96c1 b5_BossHandler27 ; boss type 27
+label b5_label_971c b5_BossHandler28 ; boss type 28
+label b5_label_97d0 b5_BossHandler29 ; boss type 29
+label b5_label_9884 b5_BossHandler30 ; boss type 30
+label b5_label_98c8 b5_BossHandler31 ; boss type 31
+label b5_label_9908 b5_BossHandler32 ; boss type 32
+label _data_cf33_indexed SoundCommandHandlers ; sound-data commands: handler address - 1 (RTS trick at $CCEC, returns to $CD05)
+label _label_ccec SoundRunCommand ; push return $CD05, push SoundCommandHandlers[A], RTS into the handler
+label b4_data_9c44_indexed b4_Table9C44 ; first byte is also the RTS that the beq at $9C21 lands on
+label b5_Enemy_Countdown b5_Enemy_Dying
+label b5_label_80dd b5_Enemy_Dying_Flash ; TaskMode below $50: flicker the enemy's palette and shrink its hitbox to 4x4
+label b5_label_8105 b5_Enemy_Dying_IgnoreHits ; clear the hit flag (bit 0 of ObjFlags) if something touched it, so a dying enemy can't be hit again
+label b5_label_810d b5_Enemy_Dying_CheckHitter ; hit flag set while dying: if ObjHitBy is nonzero (bat = object 10, or a shot in 3-5), clear the flag; if 0 (the player touched it last), leave it set
+label b5_label_8113 b5_Enemy_Dying_ClearHit ; clear ObjFlags bit 0 so the extra hit is never processed. Usually the bat still overlapping the enemy after the killing hit
+at bank5 $98F6 b5_Boss32_Init
+
+# ---- rooms and boss setup (fixed bank)
+$004F RoomId              ; picks the room's graphics, palette, layout pointers and music (tables at $DA6B-$DB2C, $D50E)
+label Task10_Main Task10_Room ; task slot 10: loads each room (first frame) then runs room-level logic
+label _label_d3d6 Room_Init ; first frame in a room: graphics, palette and layout for RoomId, HUD, start the player task, then StartBossTasks
+label _func_d4bb StartBossTasks ; boss room only: BossId = RoundNumber*4 + BossIdInRound, start the boss task (slot 6; Chameleon Man $15 also starts 7-9)
+label _func_d4e2 PlayRoomMusic ; boss rooms: song from _data_d50e[BossId + $10]; other rooms by RoomId
+label b5_BossHandler00 b5_Boss00_EmptyRoom ; BossId $00
+label b5_BossHandler01 b5_Boss01_ManEatingPlant ; BossId $01 (round 1)
+label b5_BossHandler02 b5_Boss02_Torigaran ; BossId $02 (round 1, dead creature listed as "Giant Spider" in manual)
+label b5_BossHandler03 b5_Boss03_PumpkinGhost ; BossId $03 (round 1)
+label b5_BossHandler05 b5_Boss05_Medusa ; BossId $05 (round 2)
+label b5_BossHandler06 b5_Boss06_ShrimpAttack ; BossId $06 (round 2)
+label b5_BossHandler07 b5_Boss07_HauntedWell ; BossId $07 (round 2)
+label b5_BossHandler09 b5_Boss09_GiantSpider ; BossId $09 (round 3)
+label b5_BossHandler10 b5_Boss10_SphinxGuardian ; BossId $0A (round 3)
+label b5_BossHandler11 b5_Boss11_GiantBullMan ; BossId $0B (round 3)
+label b5_BossHandler13 b5_Boss13_GiantCat ; BossId $0D (round 4)
+label b5_BossHandler14 b5_Boss14_PunkRocker ; BossId $0E (round 4)
+label b5_BossHandler15 b5_Boss15_GiantSamurai ; BossId $0F (round 4)
+label b5_BossHandler17 b5_Boss17_LivingDead ; BossId $11 (round 5)
+label b5_BossHandler18 b5_Boss18_MadJavelinMan ; BossId $12 (round 5)
+label b5_BossHandler21 b5_Boss21_ChameleonMan ; BossId $15: (the only boss in round 6)
+label b5_BossHandler25 b5_Boss25_Royce ; BossId $19 (round 7)
+label b5_BossHandler26 b5_Boss26_GrimReaper ; BossId $1A (round 7)
+label b5_BossHandler27 b5_Boss27_GiantSpiderII ; BossId $1B (round 7, trap boss that takes your key)
+label b5_BossHandler29 b5_Boss29_GiantDragon ; BossId $1D (round 8)
+label b5_BossHandler30 b5_Boss30_SnakeMan ; BossId $1E (round 8)
+label b5_BossHandler31 b5_Boss31_HandCreature ; BossId $1F (round 8)
+label b5_BossHandler32 b5_Boss32_DarkWorldMaster ; BossId $20 (round 9)
+
+# ---- enemy types
+#
+# Round 1; $01: ManFacedDog, $02: PsiTeen, $03: StuckLegs, $04: EyeballHorror
+# Round 2; $05: Alligator, $06: AlienEgg, $07: PukeMouth, $08: Fishman, $23: BloodDrip
+# Round 3; $09: FlyingVamp, $0A: UmbrellaBat, $0B: Skeleton, $0C: Stalact, $21: WarpSkeleton
+# Round 4; $0D: Snake, $0E: Scorpion, $0F: EgyptAlligator, $22: TurretScorpion, $24: VerticalBlock ($8084 special-cases)
+# Round 5; $11: FakeShark, $12: SeaSerpent, $13: Fishbones
+# Round 6; $14: HauntedTable, $15: HauntedChair, $16: Raindrop, $17: HauntedPants
+# Round 7; $18: Spirit, $19: ElephantMan, $1A: Umpire, $1B: FlyingImp
+# Round 8; $1C: BombBird, $1D: Witch, $1E: Constella1, $1F: Constella2, $20: Constella3
+
+# ---- enemy AI by type (bank 5). b5_Enemy_RunTypeAI -> b5_EnemyAITable[type-1] (a pre-step) -> b5_EnemyAITable2[type-1] (the behaviour)
+label b5_label_8610 b5_EnemyPre_None ; most types: straight to the behaviour
+label b5_label_8613 b5_EnemyPre_Shoot128 ; PsiTeen, Alligator, Scorpion: fire a shot every 128 frames, then the behaviour
+label b5_func_85e8 b5_Enemy_FireEvery128
+label b5_func_85ef b5_Enemy_FireEvery16 ; used by the Constellations when the player is within $50 px
+label b5_func_85f6 b5_Enemy_FireEvery32
+label b5_label_8604 b5_Enemy_FireNow ; set bit 7 of $03B4, then b5_Enemy_FireShot
+label b5_func_8465 b5_Enemy_FireShot ; only while on screen (ObjXHi = 0): StartTask 4, shot placed at the enemy's X, Y - 6
+label b5_func_82ef b5_Enemy_DespawnOffscreen ; ObjXHi != 0 and ObjX in $10-$EF (well off screen): remove the enemy
+label b5_func_8306 b5_Enemy_DespawnFarOffscreen ; same with ObjX in $40-$BF
+label b5_label_9fd8 b5_AI_Patrol ; EyeballHorror, Fishman, Scorpion, EgyptAlligator, HauntedPants: walk back and forth (b5_EnemyPatrol) and animate
+label b5_label_9ff0 b5_AI_PatrolAndHop ; PsiTeen, Skeleton, Snake: patrol, and every $20 frames hop (steps through b5_data_8445 until $80)
+label b5_func_9ffb b5_PatrolAndHop ; $10 = frames between hops
+label b5_label_a166 b5_AI_FacePlayer ; PukeMouth (and unused type $10): animate and turn to face the player
+label b5_label_a187 b5_AI_StuckLegs ; b5_func_831d, then b5_AI_FacePlayer
+label b5_label_a216 b5_AI_HauntedFurniture ; HauntedTable, HauntedChair
+label b5_label_a80b b5_AI_Constellation ; Constella1-3: within $50 px of the player, show frame b5_ConstellationFrames[type-$1E] and fire every 16 frames
+label b5_data_a859_indexed b5_ConstellationFrames
+label b5_label_a0ac b5_AI_ManFacedDog
+label b5_label_a65c b5_AI_Alligator
+label b5_label_a68f b5_AI_AlienEgg
+label b5_label_a0c0 b5_AI_FlyingVamp
+label b5_label_a709 b5_AI_UmbrellaBat
+label b5_label_a436 b5_AI_Stalact
+label b5_label_a770 b5_AI_FakeShark
+label b5_label_a97b b5_AI_SeaSerpent
+label b5_label_a2a0 b5_AI_Fishbones
+label b5_label_a94d b5_AI_Raindrop
+label b5_label_aa91 b5_AI_Spirit
+label b5_label_a7f3 b5_AI_ElephantMan
+label b5_label_a8ff b5_AI_Umpire
+label b5_label_a85c b5_AI_FlyingImp
+label b5_label_a4c5 b5_AI_BombBird
+label b5_label_a7de b5_AI_Witch
+label b5_label_a9af b5_AI_WarpSkeleton
+label b5_label_aa0e b5_AI_TurretScorpion
+label b5_label_aa32 b5_AI_BloodDrip
+label b5_label_aa45 b5_AI_VerticalBlock
+
+# ---- enemy health, damage and score
+$03A8 EnemyHealth         ; normal enemies: HP, from b5_EnemyHealthTable at spawn. Bosses also write it.
+label b5_data_86b5_indexed b5_EnemyHealthTable ; per type. $FF on Stalact, Raindrop, the Constellations, BloodDrip and VerticalBlock: only an instant-kill hit (damage $FF) removes them
+label b5_func_849a b5_Enemy_HitStun ; while hit (flag bit 2): after 12 frames, work out the damage and apply it. Inferred
+label b5_label_8500 b5_Enemy_ApplyDamage ; EnemyHealth -= $10. Mark: 1 (2 with player flags $0C), Bert: b5_BertDamageByRound. $FF (instant kill) if hit by objects 3-5, BertWeapon $0C, or a Bert shot with ObjFrame $20
+label b5_label_850f b5_Enemy_Killed ; sound $80, set the dying flag, add this type's score
+label b5_data_8655_indexed b5_BertDamageByRound ; damage of a Bert hit, indexed by RoundNumber
+label b5_func_861f b5_Enemy_AddScore ; AddScore with Y = b5_EnemyScoreIndex[type-1]
+label b5_data_8631_indexed b5_EnemyScoreIndex
+
+# ---- per-room logic (task 10) and the round 1 "horror world" event
+$0050 ScreenPage          ; which screen-width section of the current room the player is in (+1/-1 as the room scrolls)
+$0055 HorrorWorld         ; bit 7 set = round 1 has switched to the horror version (RoomId 0 then uses CHR1 bank 1, palette 0 and song $36). Cleared at ROUND START.
+$006A RoomIdNext          ; room id from the round start / door data; copied into RoomId when the room loads
+label _label_d572 Room_Update ; every frame in a room: update, collisions, then one rotating job per frame (TaskMode & 3)
+label _label_d589 Room_RotatingJobs ; 0 = redraw score, 1 = _func_d88e, 2 = _func_d616, 3 = Room_CheckHorrorEvent
+label _label_d5a9 Room_CheckHorrorEvent ; round 1 only (RoomIdNext 0): on reaching ScreenPage 7 (the haniwa) the first time, run the lightning sequence and switch to the horror world
+label _label_d5c7 HorrorEvent_Lightning ; 16 times: lightning flash, normal tiles, flash, horror tiles (CHR1 bank 1, palette 0). Then silence, wait 32 frames, horror music.
+label _func_d5f6 LightningFlash ; background colour white/black 3 times, 1 frame each
+label _data_da7b_indexed RoomDataBank ; per RoomId: PRG bank with the room's data
+label _data_da9b_indexed RoomChr0Banks ; per RoomId: PlayfieldChr0Bank
+label _data_daab_indexed RoomChr1Banks ; per RoomId: PlayfieldChr1Bank
+label _data_dabb_indexed RoomPalettes ; per RoomId: SetPalette id
+
+
+# ---- room tilemap streaming (fixed bank) - format in tools/formats/level_and_sprite_formats.md
+$0040 RoomDataBankCur     ; PRG bank holding the current room's tilemap data (from RoomDataBank)
+$032E RoomLastPage        ; last ScreenPage the room can scroll to (from _data_da8b; 0 = single screen)
+$0060 LvlColumnsPtr 2     ; current tileset: column definitions (24 bytes each)
+$0062 LvlScreensPtr 2     ; current tileset: screens (8 x [column id, attribute-set id])
+$0064 LvlAttrSetsPtr 2    ; current tileset: attribute sets (6 bytes each)
+$0066 LvlMetatilesPtr 2   ; current tileset: metatiles (4 tile ids each)
+label _data_da6b_indexed RoomTileset ; per RoomId: tileset number (index into the four Tileset* pointer tables)
+label _data_da8b_indexed RoomLastPages ; per RoomId: last scroll page
+label _data_dacb_indexed TilesetMetatiles
+label _data_daeb_indexed TilesetColumns
+label _data_db0b_indexed TilesetScreens
+label _data_db2b_indexed TilesetAttrSets
+label _func_d6dc Room_Scroll ; scroll by A pixels (direction from $0521); when a new 16 px column comes into view, queue it
+label _func_d73b Room_ColumnPpuAddr ; nametable address for the incoming column
+label _func_d75e Room_ColumnPtr ; screen entry -> column definition pointer
+label _func_d775 Room_BuildColumn ; 12 metatiles -> 2 x 24 tiles into $0523/$053B, plus attributes, for the NMI to upload
+label _func_d7a6 Room_PutMetatile ; copy one metatile's 4 tiles into the column buffers
+label _func_d7c2 Room_ScreenEntryPtr ; (ScreenPage + DoorId) * 16 + LvlScreensPtr
+label _func_d808 Room_AttrSetPtr ; attribute-set id * 6 + LvlAttrSetsPtr, 6 bytes -> $0553
+label _func_d834 Room_MetatilePtr ; metatile id * 4 + LvlMetatilesPtr
+label _func_d848 Room_ColumnOffset ; column id * 24
+
+# ---- bank 4: password encode / check
+# Password = 9 chars of 6 bits: [checksum lo, 7 scrambled data chars, checksum hi].
+# The data is the 10 bytes $96-$9F packed by b4_PasswordFieldBits: $96 1 bit, RoundNumber and $98-$9D 4 bits each, PlayerHealth and $9F 6 bits each.
+$0096 PasswordData        ; first of the 10 saved bytes $96-$9F (also covers RoundNumber $97 and PlayerHealth $9E). What $96, $98-$9D and $9F hold is not known yet.
+$00A0 PasswordWork 9      ; work copy of the password as 6-bit values: +0 checksum lo, +1..+7 data, +8 checksum hi
+$009F PasswordWork-1      ; code indexes it as PasswordWork-1,X with X = 1..9
+label b4_func_9a4d b4_MakeAndShowPassword ; between rounds: encode the current game into PasswordChars and draw it
+label b4_func_9a68 b4_DrawPasswordCharAt ; draw char A at position $0383 of the shown password
+label b4_func_9a75 b4_MakePassword ; encode $96-$9F: pack (spare bits from RngState), checksum, scramble, to chars, copy to PasswordChars
+label b4_func_9aa6 b4_PackPasswordData ; $96-$9F -> 41 bits in PasswordWork+1..+7, widths from b4_PasswordFieldBits
+label b4_func_9aea b4_PasswordChecksum ; 12-bit checksum ($10/$11) over PasswordWork+1..+7
+label b4_func_9af5 b4_PasswordChecksumStep ; feed one 6-bit value (A) into the checksum
+label b4_func_9b18 b4_ScramblePassword ; add the key stream to PasswordWork+1..+7 (mod 64)
+label b4_func_9b28 b4_UnscramblePassword ; subtract the key stream from PasswordWork+1..+7 (mod 64)
+label b4_func_9b3a b4_PasswordKeyStep ; advance the key stream shift register in $16 (seeded from checksum lo | $40)
+label b4_func_9b59 b4_PasswordValuesToChars ; 0-63 -> char codes, skipping the codes after $22, $2E and $3A
+label b4_func_9b75 b4_CopyPasswordWorkToChars ; PasswordWork -> PasswordChars
+label b4_data_9b8c_indexed b4_CheckPassword ; carry clear = accepted (A = 0 normal, 1 = round-select code)
+label b4_data_9b8f_indexed b4_CheckPassword_Normal
+label b4_func_9bb6 b4_PasswordCharsToValues ; undo b4_PasswordValuesToChars; carry set if a position is blank
+label b4_func_9bd7 b4_CopyPasswordCharsToWork ; PasswordChars -> PasswordWork
+label b4_func_9be1 b4_VerifyPasswordChecksum ; checksum over data + both checksum chars; carry clear only if it comes out 0
+label b4_func_9bf8 b4_UnpackPasswordData ; PasswordWork+1..+7 -> $96-$9F
+label b4_Table9C44 b4_PasswordFieldBits ; index = bit width, value = how many fields have it (1 x 1 bit, 7 x 4 bits, 2 x 6 bits). Byte 0 is also an RTS.
+label b4_func_9c4d b4_CheckSpecialPassword ; compare with b4_SpecialPasswords; on a match, carry clear and A = code number
+label b4_func_9c78 b4_SpecialPassword_SetRound ; the char after the matched code, if 0-7, becomes RoundNumber
+label b4_data_9c83_indexed b4_SpecialPasswords ; $FF-terminated codes: 0, 5, 5, blank -> round select (next char = round)
+label b4_label_998c b4_PasswordEnd ; END picked on the password screen: check, then the failure message loop or fade out
+
+# ---- boss projectiles
+label b5_label_9110 b5_Boss01_FacePlayer ; A = $0C (boss at or right of player) or $04 -> TaskArg1 (facing)
+label b5_func_8d9e b5_BossFireProjectile ; X = projectile kind (0-$10), A = direction bits: StartTask 3 (task 4 for kind 8), placed at ObjX/Y + b5_ProjectileOffsetX/Y[kind]
+label b5_data_8dfa_indexed b5_ProjectileOffsetY ; per projectile kind: Y offset from the boss
+label b5_data_8e0e_indexed b5_ProjectileOffsetX ; per projectile kind: X offset from the boss (subtracted when facing left)
+label b5_label_9952 b5_BossProjectileTask ; tasks 3-5 in a boss room (BossRoomFlag bit 7)
+
+# ---- enemy spawning from the room spawn tables (bank 7)
+label _func_db4b Room_SpawnEnemies ; on scroll: map[page*16 + ScrollX>>4] = spawn entry n; list[n-1] = [TaskEnemyType, ObjY | TaskDropKind]; StartTask 6+X for free X 0-2
+label _data_ed69_indexed RoomSpawnMapPtrs ; per RoomId: 256-byte spawn map (rooms 8-15 share a dummy)
+label _data_ed6a_indexed RoomSpawnMapPtrs+1
+label _data_ed89_indexed RoomSpawnListPtrs ; per RoomId: list of 2-byte spawn entries
+label _data_ed8a_indexed RoomSpawnListPtrs+1
+
+# ---- doors and the round exit
+$0053 DoorRequest         ; set when the player presses Up on a door tile (type 6) or at a boss-room exit; MaybeEnterDoor acts on it and clears it
+label b4_data_823e_indexed b4_PlayerDpadHandlers ; indexed by JoyHeld & $0F (R=1 L=2 D=4 U=8)
+label b4_label_82ed b4_Player_UpPressed ; tile under player: 3 -> b4_func_8abf; 7 with BossesLeft = 0 -> round complete (GameMode |= $40) and health refill; 6 -> DoorRequest
+label _func_dbe4 GetTileTypeAtPlayer ; -> $18 = type of the tile under the player object
+label _func_d949 TryEnterDoor ; carry clear = DoorRequest was set and the door data (bank 2) gives the next room
+label _func_d902 DrawKeyIcon ; tiles $B4-$B7 at $235C; drawn when BossesLeft = 0 (the "key" is BossesLeft reaching 0). Inferred

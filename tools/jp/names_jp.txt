@@ -1,0 +1,20 @@
+# Names for the JP prototype disassembly only (monsterparty_jp/). Same format as tools/names.txt:
+#   $ADDR Name [size] ; comment        RAM
+#   label Old New ; comment            rename a label
+#   at bankN $ADDR Name ; comment      new label (JP addresses)
+# Apply: python3 tools/apply_names.py monsterparty_jp tools/jp/names_jp.txt && ./monsterparty_jp/build.sh
+#
+# Most labels came from the US names, so a rename in tools/names.txt does NOT reach monsterparty_jp/.
+# Add it here too if you want it in both.
+#
+# ---- bosses: by default the JP labels keep the US boss names (see tools/jp/bosses.md for the
+# prototype names). To give a JP label its prototype name instead, uncomment and edit, e.g.:
+# label b5_Boss03_PumpkinGhost b5_Boss03_JPName ; JP prototype name (US: Pumpkin Ghost)
+
+# ---- boss routines with no US name (added 2026-10-24)
+label b5_label_a4a7 b5_Boss29_Init ; Giant Dragon: 7 body segments (objects 3-9) in a horizontal line from X $80, Y $80, all heading $4C
+label b5_label_a635 b5_Boss32_Init ; Dark World Master: sprite CHR bank 8, palette $10 (the US version also sets ObjFlags bit 5: nose starts closed)
+label b5_label_a3dc b5_BossHandler22 ; boss types 22, 23: rts only (the US uses the type 20 handler, jmp b5_BossLeaves)
+
+# ---- prototype boss names (added 2026-10-25)
+label b5_Boss27_GiantSpiderII b5_Boss27_TotemPole ; JP prototype: an unfinished, unused totem pole boss ("あたしは トーテムポール"); US: Giant Spider II. Unreachable in JP (no round 7 door leads to it)

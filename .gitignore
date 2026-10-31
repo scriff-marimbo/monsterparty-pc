@@ -1,0 +1,20 @@
+/roms/*.nes
+/monsterparty/chr.bin
+/monsterparty/*.asm
+/monsterparty/monsterparty.o
+/monsterparty/monsterparty.dbg
+/Claude outputs
+/.vscode
+/monsterparty/monsterparty.nes
+/monsterparty_jp/chr.bin
+/monsterparty_jp/*.asm
+/monsterparty_jp/monsterparty.o
+/monsterparty_jp/monsterparty_jp.dbg
+/monsterparty_jp/monsterparty_jp.nes
+/monsterparty_jp/totempole*.png
+/monsterparty_jp/totempole*.aseprite
+/tools/text/.~lock.*
+/port/text_output.txt
+# the translated game code: made by CMake (port/tools/translate.py) from the disassembly, never committed
+/port/gen/
+/port/gen_jp/

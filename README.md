@@ -1,4 +1,4 @@
-# NESdsm
+# Monster Party: Let's Go Again (PC port)
 
 A disassembly of the NES game Monster Party (US release) and the unreleased Japanese prototype
 (*Parody World - Monster Party*), plus a native desktop port: the game's 6502 code translated to
